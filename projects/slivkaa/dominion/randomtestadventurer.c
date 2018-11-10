@@ -43,6 +43,7 @@ int main(){
     // ----------- TEST 1: Randomizing number of players  --------------
     int numRuns = 10, numTests = 4;
     int testResults[10][5];
+    thisPlayer = 0;
     init2dArray(&testResults, 10, 5);
     for(i = 0; i < numTests; i++)
     {
@@ -53,17 +54,18 @@ int main(){
         //Playing card
         choice3 = thisPlayer;
         cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
-        doAdventurerUnitTests(&initG, &testG, testResults[i]);
+        doAdventurerUnitTests(&initG, &testG, testResults[i], thisPlayer);
     }
     printTestResults(testResults, numTests, numRuns);
 	
    return 0;
 }
 
-void doAdventurerUnitTests(struct gameState* initG, struct gameState* testG, int* testResults){
+void doAdventurerUnitTests(struct gameState* initG, struct gameState* testG, int* testResults, int thisPlayer){
+    int i, j, k;
     int actual[4], expected[4], numPasses = 0;
     int card;
-    	// ----------- TEST 1: player should have +2 treasure cards in his hand  --------------
+    // ----------- TEST 1: player should have +2 treasure cards in his hand  --------------
     int numTreasures = 0;
     for(i = initG->handCount[thisPlayer] - 1; i < testG->handCount[thisPlayer]; i++){
         card = testG->hand[thisPlayer][i];
