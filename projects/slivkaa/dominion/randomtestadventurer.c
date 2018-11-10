@@ -30,15 +30,17 @@ int main(){
 	int k[10] = {adventurer, embargo, village, minion, mine, cutpurse,
 			sea_hag, tribute, smithy, council_room};
 
-	// initialize a game state and player cards
-	initializeGame(numPlayers, k, seed, &initG);  
-    // copy the game state to a test case
-    memcpy(&testG, &initG, sizeof(struct gameState));
-    //Playing card
-    choice3 = thisPlayer;
-	cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
+	// // initialize a game state and player cards
+	// initializeGame(numPlayers, k, seed, &initG);  
+    // // copy the game state to a test case
+    // memcpy(&testG, &initG, sizeof(struct gameState));
+    // //Playing card
+    // choice3 = thisPlayer;
+	// cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
 
 	printf("----------------- Testing Card: %s ----------------\n", TESTCARD);
+    srand((time(NULL)));
+
     // ----------- TEST 1: Randomizing number of players  --------------
     int numTests = 10;
     int testResults[10][5];
