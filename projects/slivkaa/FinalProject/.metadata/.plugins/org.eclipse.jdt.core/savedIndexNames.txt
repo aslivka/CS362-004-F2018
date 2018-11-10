@@ -1,0 +1,7 @@
+INDEX VERSION 1.131+C:\Users\artikk\Downloads\Personal files\College\OSU\Courses\CS362\Assignments\Dominion repo\CS362-004-F2018\projects\slivkaa\FinalProject\.metadata\.plugins\org.eclipse.jdt.core
+1469708200.index
+3459785222.index
+3270299814.index
+2158312854.index
+3879948796.index
+2811611835.index

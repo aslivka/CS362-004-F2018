@@ -1,0 +1,1 @@
+INDEX VERSION 1.131+C:\Users\artikk\Downloads\Personal files\College\OSU\Courses\CS362\Assignments\Dominion repo\CS362-004-F2018\projects\slivkaa\FinalProject\URLValidatorCorrect\.metadata\.plugins\org.eclipse.jdt.core
