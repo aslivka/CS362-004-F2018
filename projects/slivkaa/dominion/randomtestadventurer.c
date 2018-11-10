@@ -8,7 +8,7 @@
 
 #include "testLib.h"
 #define TESTCARD "Adventurer"
-void doAdventurerUnitTests(struct gameState* initG, struct gameState* testG, int thisPlayer, int kCards[10], int* testResults);
+void doAdventurerUnitTests(struct gameState* initG, struct gameState* testG, int thisPlayer, int k[10], int* testResults);
 void printTestResults(int** testResults, int numTests, int numRuns);
 
 int main(){
@@ -61,7 +61,7 @@ int main(){
    return 0;
 }
 
-void doAdventurerUnitTests(struct gameState* initG, struct gameState* testG, int thisPlayer, int kCards[10], int* testResults){
+void doAdventurerUnitTests(struct gameState* initG, struct gameState* testG, int thisPlayer, int k[10], int* testResults){
     int i, j;
     int actual[4], expected[4];
     int card;
