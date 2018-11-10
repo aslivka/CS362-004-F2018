@@ -108,16 +108,7 @@ void printGameState(struct gameState *state){
 }
 
 int randInt(int min, int max){
-    //Initializing srand function once per program execution
-	static int x = 0;
-	if (x == 0)
-	{
-		srand((time(NULL)));
-		x++;
-	}
-
 	int randomVal = (rand() % (max - min + 1)) + min;
-
 	return randomVal;
 }
 
