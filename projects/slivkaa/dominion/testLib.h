@@ -8,6 +8,8 @@
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
+
 // #include <limits.h>
 
 int compareInts(int a, int b);
@@ -15,7 +17,7 @@ int compareGameStates(struct gameState *state1, struct gameState *state2);
 void initGameState(struct gameState *state);
 void printGameState(struct gameState *state);
 int randInt(int min, int max);
-int init2dArray(int** array, int rows, int cols);
+void init2dArray(int** array, int rows, int cols);
 
 
 /*

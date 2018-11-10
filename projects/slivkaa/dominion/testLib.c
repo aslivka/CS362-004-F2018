@@ -112,7 +112,7 @@ int randInt(int min, int max){
 	return randomVal;
 }
 
-int init2dArray(int** array, int rows, int cols){
+void init2dArray(int** array, int rows, int cols){
     int i; 
     for(i = 0; i < rows; i++){
         memset(array[i], 0, cols * sizeof(int));
