@@ -42,9 +42,8 @@ int main(){
 
     // ----------- TEST 1: Randomizing number of players  --------------
     int numRuns = 10, numTests = 4;
-    int testResults[10][5];
+    int** testResults = init2dArray(numRuns, numTests + 1);
     thisPlayer = 0;
-    init2dArray(&testResults, 10, 5);
     for(i = 0; i < numTests; i++)
     {
         numPlayers = randInt(2, 4);
@@ -57,7 +56,8 @@ int main(){
         doAdventurerUnitTests(&initG, &testG, thisPlayer, k,  testResults[i]);
     }
     printTestResults(testResults, numTests, numRuns);
-	
+    delete2dArray(testResults, numRuns, numTests + 1);
+
    return 0;
 }
 

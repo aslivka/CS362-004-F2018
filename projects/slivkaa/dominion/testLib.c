@@ -112,9 +112,32 @@ int randInt(int min, int max){
 	return randomVal;
 }
 
-void init2dArray(int** array, int rows, int cols){
+int** init2dArray(int rows, int cols){
+    int i; 
+    int** array = calloc(rows, sizeof(int*));
+    for(i = 0; i < rows; i++){
+        array[i] = calloc(cols, sizeof(int));
+    }
+}
+
+void delete2dArray(int** array, int rows, int cols){
+    int i; 
+    if(array != 0){
+         for(i = 0; i < rows; i++){
+            if(array[i] != 0){
+                free(array[i]);
+                array[i] = 0;
+            }
+        }
+        free(array);
+    }
+}
+
+void clear2dArray(int** array, int rows, int cols){
     int i; 
     for(i = 0; i < rows; i++){
         memset(array[i], 0, cols * sizeof(int));
     }
 }
+
+
