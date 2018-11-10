@@ -43,7 +43,7 @@ int main(){
     // ----------- TEST 1: Randomizing number of players  --------------
     int numRuns = 10, numTests = 4;
     int testResults[10][5];
-    init2dArray(testResults, 10, 5);
+    init2dArray(&testResults, 10, 5);
     for(i = 0; i < numTests; i++)
     {
         numPlayers = randInt(2, 4);
