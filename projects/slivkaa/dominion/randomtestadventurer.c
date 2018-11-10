@@ -8,7 +8,7 @@
 
 #include "testLib.h"
 #define TESTCARD "Adventurer"
-void doAdventurerUnitTests(struct gameState* initG, struct gameState* testG, int thisPlayer, int* testResults);
+void doAdventurerUnitTests(struct gameState* initG, struct gameState* testG, int thisPlayer, int kCards[10], int* testResults);
 void printTestResults(int** testResults, int numTests, int numRuns);
 
 int main(){
@@ -26,6 +26,8 @@ int main(){
     int seed = 1000;
     int numPlayers = 2, thisPlayer = 0;
 	struct gameState initG, testG;
+    int k[10] = {adventurer, embargo, village, minion, mine, cutpurse,
+			sea_hag, tribute, smithy, council_room};
 
 	// // initialize a game state and player cards
 	// initializeGame(numPlayers, k, seed, &initG);  
@@ -52,19 +54,17 @@ int main(){
         //Playing card
         choice3 = thisPlayer;
         cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
-        doAdventurerUnitTests(&initG, &testG, thisPlayer, testResults[i]);
+        doAdventurerUnitTests(&initG, &testG, thisPlayer, k,  testResults[i]);
     }
     printTestResults(testResults, numTests, numRuns);
 	
    return 0;
 }
 
-void doAdventurerUnitTests(struct gameState* initG, struct gameState* testG, int thisPlayer, int* testResults){
+void doAdventurerUnitTests(struct gameState* initG, struct gameState* testG, int thisPlayer, int kCards[10], int* testResults){
     int i, j;
     int actual[4], expected[4];
     int card;
-    int k[10] = {adventurer, embargo, village, minion, mine, cutpurse,
-			sea_hag, tribute, smithy, council_room};
 
     // ----------- TEST 1: player should have +2 treasure cards in his hand  --------------
     int numTreasures = 0;
