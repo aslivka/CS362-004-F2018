@@ -9,6 +9,7 @@
 #include "testLib.h"
 
 #define TESTCARD "Adventurer"
+
 int main(){
 
     /* Basic testing for adventurer
@@ -48,7 +49,7 @@ int main(){
     expected[1] = (initG.handCount[thisPlayer] + 2);
     actual[0] = numTreasures;
     actual[1] = testG.handCount[thisPlayer];
-    if( (actual[0] == expected[0]) && (actual[1] == expected[1]) ){ 
+    if( (actual[0] == expected[0]) && (actual[1] == expected[1])){ 
         printf("TEST 1: PASS player 1 has +2 treasure cards in his hand \n");
         printf("\ttreasure count = %d, expected = %d \n", actual[0], expected[0]);
         printf("\tbefore draw hand count = %d, after draw hand count = %d, expected = %d\n", initG.handCount[thisPlayer], actual[1], expected[1]); 
@@ -142,3 +143,4 @@ int main(){
 
    return 0;
 }
+

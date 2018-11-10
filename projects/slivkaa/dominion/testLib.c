@@ -107,3 +107,23 @@ void printGameState(struct gameState *state){
     } 
 }
 
+int randInt(int min, int max){
+    //Initializing srand function once per program execution
+	static int x = 0;
+	if (x == 0)
+	{
+		srand((time(NULL)));
+		x++;
+	}
+
+	int randomVal = (rand() % (max - min + 1)) + min;
+
+	return randomVal;
+}
+
+int init2dArray(int** array, int rows, int cols){
+    int i; 
+    for(i = 0; i < rows; i++){
+        memset(array[i], 0, cols * sizeof(int));
+    }
+}
