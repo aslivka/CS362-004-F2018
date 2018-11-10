@@ -8,7 +8,7 @@
 
 #include "testLib.h"
 #define TESTCARD "Adventurer"
-void doAdventurerUnitTests(struct gameState* initG, struct gameState* testG, int* testResults);
+void doAdventurerUnitTests(struct gameState* initG, struct gameState* testG, int thisPlayer, int* testResults);
 void printTestResults(int** testResults, int numTests, int numRuns);
 
 int main(){
@@ -26,8 +26,6 @@ int main(){
     int seed = 1000;
     int numPlayers = 2, thisPlayer = 0;
 	struct gameState initG, testG;
-	int k[10] = {adventurer, embargo, village, minion, mine, cutpurse,
-			sea_hag, tribute, smithy, council_room};
 
 	// // initialize a game state and player cards
 	// initializeGame(numPlayers, k, seed, &initG);  
@@ -54,17 +52,20 @@ int main(){
         //Playing card
         choice3 = thisPlayer;
         cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
-        doAdventurerUnitTests(&initG, &testG, testResults[i], thisPlayer);
+        doAdventurerUnitTests(&initG, &testG, thisPlayer, testResults[i]);
     }
     printTestResults(testResults, numTests, numRuns);
 	
    return 0;
 }
 
-void doAdventurerUnitTests(struct gameState* initG, struct gameState* testG, int* testResults, int thisPlayer){
-    int i, j, k;
-    int actual[4], expected[4], numPasses = 0;
+void doAdventurerUnitTests(struct gameState* initG, struct gameState* testG, int thisPlayer, int* testResults){
+    int i, j;
+    int actual[4], expected[4];
     int card;
+    int k[10] = {adventurer, embargo, village, minion, mine, cutpurse,
+			sea_hag, tribute, smithy, council_room};
+
     // ----------- TEST 1: player should have +2 treasure cards in his hand  --------------
     int numTreasures = 0;
     for(i = initG->handCount[thisPlayer] - 1; i < testG->handCount[thisPlayer]; i++){
@@ -153,12 +154,6 @@ void doAdventurerUnitTests(struct gameState* initG, struct gameState* testG, int
 
     }
 
-    // if(test == 4){
-    // //    printf("TEST SUCCESSFULLY COMPLETED\n");
-    // }
-    // else{
-    //     // printf("TEST FAILED\n");
-    // }
 }
 
 void printTestResults(int** testResults, int numTests, int numRuns){
