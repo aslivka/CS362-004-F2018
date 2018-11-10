@@ -34,7 +34,7 @@ randtestresults: testLib runCardTests
 testLib: testLib.c testLib.h
 	gcc -c testLib.c -g  $(CFLAGS)
 
-runCardTests: randomtestadventurer.c  randomtestcard1.c  randomtestcard2.c dominion.o rngs.o testLib.o
+runCardTests: randomtestadventurer.c  dominion.o rngs.o testLib.o
 	echo "Result for running Dominion CARD random tests:" >> randtestresults.out
 
 	echo "randomtestadventurer.c :" >> randtestresults.out
