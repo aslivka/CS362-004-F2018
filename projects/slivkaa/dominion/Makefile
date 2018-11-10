@@ -55,7 +55,7 @@ runCardTests: randomtestadventurer.c  randomtestcard1.c  randomtestcard2.c domin
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 
-all: playdom player unittestresults
+all: playdom player randtestresults
 
 clean:
 	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
