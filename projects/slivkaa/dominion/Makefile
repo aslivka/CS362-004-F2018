@@ -42,15 +42,15 @@ runCardTests: randomtestadventurer.c  randomtestcard1.c  randomtestcard2.c domin
 	./randomtestadventurer >> randtestresults.out
 	gcov -b dominion.c >> randtestresults.out
 
-	echo "randomtestcard1.c:" >> randtestresults.out
-	gcc -o randomtestcard1 -g randomtestcard1.c dominion.o rngs.o testLib.o $(CFLAGS)
-	./randomtestcard1 >> randtestresults.out
-	gcov -b dominion.c >> randtestresults.out
+	# echo "randomtestcard1.c:" >> randtestresults.out
+	# gcc -o randomtestcard1 -g randomtestcard1.c dominion.o rngs.o testLib.o $(CFLAGS)
+	# ./randomtestcard1 >> randtestresults.out
+	# gcov -b dominion.c >> randtestresults.out
 
-	echo "randomtestcard2.c:" >> randtestresults.out
-	gcc -o randomtestcard2 -g randomtestcard2.c dominion.o rngs.o testLib.o $(CFLAGS)
-	./randomtestcard2 >> randtestresults.out
-	gcov -b dominion.c >> randtestresults.out
+	# echo "randomtestcard2.c:" >> randtestresults.out
+	# gcc -o randomtestcard2 -g randomtestcard2.c dominion.o rngs.o testLib.o $(CFLAGS)
+	# ./randomtestcard2 >> randtestresults.out
+	# gcov -b dominion.c >> randtestresults.out
 
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
