@@ -188,7 +188,8 @@ int isDupCard(int* inArray, int size, int card){
 }
 
 void runVillageUnitTests(struct gameState* initG, struct gameState* testG, int thisPlayer, int k[10], int* testResults){
-    int actual[3], expected[3]
+    int actual[3], expected[3];
+    
     expected[0] = initG->deckCount[thisPlayer] - 1;
     actual[0] = testG->deckCount[thisPlayer];
     if( (expected[0] == actual[0])  ){ 
