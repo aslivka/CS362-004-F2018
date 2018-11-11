@@ -12,12 +12,6 @@ int isDupCard(int* inArray, int size, int card);
 
 int main(){
 
-    /* Basic testing for adventurer
-    1. At end of play, player should have +2 treasure cards in his hand 
-    2. All drawn cards besides 2 treasure cards should be moved to discard pile
-    3. No state change should occur to kingdom card piles.
-    4. No state change should occur to other's players hand and deck piles.
-     */  
     int i, j, m;
     int handpos = 0, choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0;
     int seed = 1000;
@@ -158,13 +152,12 @@ int main(){
     thisPlayer = 0;
     numPlayers = 2;
     int card;
-
-    // int m;
     for(m = 0; m < numRuns; m++)
     {
         //Initializing game states
         memset(&initG, 0, sizeof(struct gameState));
         memset(&testG, 0, sizeof(struct gameState));
+        //Assigning random kingdom cards to k array
         for(i = 0; i < 10; i++){
             do{
                 card = randInt(adventurer, sea_hag);  

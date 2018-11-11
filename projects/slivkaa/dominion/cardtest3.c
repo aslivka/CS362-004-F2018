@@ -90,7 +90,7 @@ int main(){
         numPasses++;
     }
     else{
-        printf("TEST 3: FAIL state change occured to other player's deck/hand\n");
+        printf("TEST 4: FAIL state change occured to other player's deck/hand\n");
         printf("\thand count = %d, expected = %d\n", actual[0], expected[0]);
         printf("\tdeck count = %d, expected = %d\n", actual[1], expected[1]);
     }
