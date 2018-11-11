@@ -58,7 +58,7 @@ int main(){
     delete2dArray(testResults, numRuns, numTests + 1);
 
     // ----------- TEST 2: Randomizing player's decks --------------
-    printf("TEST 2: Randomizing decks for all players, max number of cards = 100\n");
+    printf("TEST 2: Randomizing deck piles, max number of cards = 100\n");
     numRuns = 100;
     numTests = 4;
     testResults = init2dArray(numRuns, numTests + 1);
@@ -89,7 +89,7 @@ int main(){
     delete2dArray(testResults, numRuns, numTests + 1);
 
     // // ----------- TEST 3: Randomizing player's hand piles --------------
-    printf("TEST 3: Randomizing hands for all players, max num of cards = 10\n");
+    printf("TEST 3: Randomizing hand piles, max num of cards = 10\n");
     numRuns = 100;
     numTests = 4;
     testResults = init2dArray(numRuns, numTests + 1);
@@ -120,7 +120,7 @@ int main(){
     delete2dArray(testResults, numRuns, numTests + 1);
 
     // ----------- TEST 3: Randomizing player's discard piles --------------
-    printf("TEST 4: Randomizing discard piles, max num of cards = 5\n");
+    printf("TEST 4: Randomizing discard piles, max num of cards = 10\n");
     numRuns = 100;
     numTests = 4;
     testResults = init2dArray(numRuns, numTests + 1);
