@@ -91,7 +91,7 @@ int main(){
 
 
     // ----------- TEST 3: Randomizing player's hands --------------
-    printf("TEST 2: Randomizing hands for all players\n");
+    printf("TEST 3: Randomizing hands for all players\n");
     numRuns = 100;
     numTests = 4;
     testResults = init2dArray(numRuns, numTests + 1);
@@ -101,18 +101,21 @@ int main(){
     for(m = 0; m < numRuns; m++)
     {
         initializeGame(numPlayers, k, seed, &initG);  
-        //Setting random numbers of victory and treasure cards
-        for (i = 0; i < numPlayers; i++){
-            initG.deckCount[i] = 0;
-            for (j = 0; j < 3; j++){
-                initG.deck[i][j] = randInt(estate, province); //1 = estate, 3 = province
-                initG.deckCount[i]++;
-            }
-            for (j = 3; j < 10; j++){
-                initG.deck[i][j] = randInt(copper, gold);   //4 = copper, 6=gold
-                initG.deckCount[i]++;		
+         for (i = 0; i < numPlayers; i++){
+            initG.handCount[i] = 0;
+            for (j = 0; j < 5; j++){
+                initG.hand[i][j] = randInt(estate, treasure_map); //1 = estate, 3 = province
+                initG.handCount[i]++;
             }
         }       
+
+        //Setting random number of cards in hand
+    //         deckCounter = state->deckCount[player];//Create holder for the deck count
+    // state->hand[player][count] = state->deck[player][deckCounter - 1];//Add card to the hand
+    // state->deckCount[player]--;
+    // state->handCount[player]++;//Increment hand count
+
+        
         // copy the game state to a test case
         memcpy(&testG, &initG, sizeof(struct gameState));
         // //Playing card
@@ -259,7 +262,7 @@ void printTestResults(int** testResults, int numTests, int numRuns, int verbose)
     printf("Test summary\n");
     printf("Unit test failures:\n");
     for(k = 0; k < numTests; k++){
-        printf("test %d = %d fails\n", k+1, failedTests[k]);
+        printf("test %d: %d failures\n", k+1, failedTests[k]);
     }
     printf("Number of passed test runs: %d/%d runs\n", numPasses, numRuns);
     if((numPasses == numRuns) && (numPasses > 0)){
