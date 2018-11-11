@@ -259,9 +259,8 @@ void printTestResults(int** testResults, int numTests, int numRuns, int verbose)
     printf("Test summary\n");
     printf("Unit test failures:\n");
     for(k = 0; k < numTests; k++){
-        printf("test %d: %d fail\t", k+1, failedTests[k]);
+        printf("test %d = %d fails\n", k+1, failedTests[k]);
     }
-    printf("\n");
     printf("Number of passed test runs: %d/%d runs\n", numPasses, numRuns);
     if((numPasses == numRuns) && (numPasses > 0)){
         printf("TEST SUCCESSFULLY COMPLETED\n\n");
