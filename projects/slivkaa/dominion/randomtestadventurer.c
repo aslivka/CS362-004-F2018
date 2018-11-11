@@ -34,7 +34,7 @@ int main(){
 
     srand((time(NULL)));
 	printf("----------------- Testing Card: %s ----------------\n", TESTCARD);
-    printf("EXPECTED: All random tests should fail due to introced bugs in Asst 2.\n");
+    printf("EXPECTED: All random tests should fail due to introduced bugs in Asst 2.\n");
 
     // ----------- TEST 1: Randomizing number of players  --------------
     printf("TEST 1: Randomizing number of players\n");
@@ -57,7 +57,41 @@ int main(){
     delete2dArray(testResults, numRuns, numTests + 1);
 
     // ----------- TEST 2: Randomizing player's decks --------------
-    printf("TEST 2: Randomizing decks for all players, max number of cards = 10\n");
+    printf("TEST 2: Randomizing decks for all players, max number of cards = 30\n");
+    numRuns = 100;
+    numTests = 4;
+    testResults = init2dArray(numRuns, numTests + 1);
+    thisPlayer = 0;
+    numPlayers = 2;
+    // int m;
+    for(m = 0; m < numRuns; m++)
+    {
+        initializeGame(numPlayers, k, seed, &initG);  
+        //Setting random numbers of victory and treasure cards
+        for (i = 0; i < numPlayers; i++){
+            initG.deckCount[i] = 0;
+            for (j = 0; j < 10; j++){
+                initG.deck[i][j] = randInt(estate, province); //1 = estate, 3 = province
+                initG.deckCount[i]++;
+            }
+            for (j = 10; j < 30; j++){
+                initG.deck[i][j] = randInt(copper, gold);   //4 = copper, 6=gold
+                initG.deckCount[i]++;		
+            }
+        }       
+        // copy the game state to a test case
+        memcpy(&testG, &initG, sizeof(struct gameState));
+        // //Playing card
+        choice3 = thisPlayer;
+        cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
+        doAdventurerUnitTests(&initG, &testG, thisPlayer, k, testResults[m]);
+    }
+    printTestResults(testResults, numTests, numRuns, 0);
+    delete2dArray(testResults, numRuns, numTests + 1);
+
+
+    // ----------- TEST 3: Randomizing player's hands --------------
+    printf("TEST 2: Randomizing hands for all players\n");
     numRuns = 100;
     numTests = 4;
     testResults = init2dArray(numRuns, numTests + 1);
@@ -223,9 +257,9 @@ void printTestResults(int** testResults, int numTests, int numRuns, int verbose)
     }
     //Print summary
     printf("Test summary\n");
-    printf("Unit test failures: ");
+    printf("Unit test failures:\n");
     for(k = 0; k < numTests; k++){
-        printf("|test %d: %d fails| ", k+1, failedTests[k]);
+        printf("test %d: %d fail\t", k+1, failedTests[k]);
     }
     printf("\n");
     printf("Number of passed test runs: %d/%d runs\n", numPasses, numRuns);
