@@ -44,7 +44,7 @@ int main(){
     int numRuns = 10, numTests = 4;
     int** testResults = init2dArray(numRuns, numTests + 1);
     thisPlayer = 0;
-    for(i = 0; i < numTests; i++)
+    for(i = 0; i < numRuns; i++)
     {
         numPlayers = randInt(2, 4);
         initializeGame(numPlayers, k, seed, &initG);  
@@ -53,7 +53,7 @@ int main(){
         //Playing card
         choice3 = thisPlayer;
         cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
-        doAdventurerUnitTests(&initG, &testG, thisPlayer, k,  testResults[i]);
+        doAdventurerUnitTests(&initG, &testG, thisPlayer, k, testResults[i]);
     }
     printTestResults(testResults, numTests, numRuns);
     delete2dArray(testResults, numRuns, numTests + 1);
@@ -153,7 +153,6 @@ void doAdventurerUnitTests(struct gameState* initG, struct gameState* testG, int
         // printf("TEST 4: FAIL State change occured to player 2's hand and deck piles\n");
 
     }
-
 }
 
 void printTestResults(int** testResults, int numTests, int numRuns){
@@ -162,12 +161,19 @@ void printTestResults(int** testResults, int numTests, int numRuns){
     //Check if tests are successful
     for(i = 0; i < numRuns; i++){
         if(testResults[i][numTests] == numTests){
-            printf("Run %d PASSED \n", i + 1);
+            printf("Run %d PASSED\n", i + 1);
             numPasses++;
         }
         else{
-            printf("Run %d FAILED ", i + 1); 
+            printf("Run %d FAILED\n", i + 1); 
         }
     }
-    printf("Summary of test runs: %d/%d passed", numPasses, numRuns);
+    //Print summary
+    printf("Summary of test runs: %d/%d passed\n", numPasses, numRuns);
+    if(numPasses = numRuns && numPasses > 0){
+        printf("TEST: PASSED\n", numPasses, numRuns);
+    }
+    else{
+        printf("TEST: FAILED\n", numPasses, numRuns);
+    }
 }
