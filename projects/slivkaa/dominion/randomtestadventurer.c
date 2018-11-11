@@ -47,6 +47,9 @@ int main(){
     for(i = 0; i < numRuns; i++)
     {
         numPlayers = randInt(2, 4);
+        //Initializing test structs
+        memset(initG, 0, sizeof(struct gameState));
+        memset(testG, 0, sizeof(struct gameState));
         initializeGame(numPlayers, k, seed, initG);  
         // copy the game state to a test case
         memcpy(testG, initG, sizeof(struct gameState));
@@ -72,6 +75,9 @@ int main(){
     // int m;
     for(m = 0; m < numRuns; m++)
     {
+        //Initializing test structs
+        memset(initG, 0, sizeof(struct gameState));
+        memset(testG, 0, sizeof(struct gameState));
         initializeGame(numPlayers, k, seed, initG);  
         //Setting random numbers of victory and treasure cards
         for (i = 0; i < numPlayers; i++){
@@ -105,9 +111,11 @@ int main(){
     // int m;
     for(m = 0; m < numRuns; m++)
     {
-        //Setting random number of cards in hand
+        //Initializing test structs
         memset(initG, 0, sizeof(struct gameState));
-        initializeGame(numPlayers, k, seed, initG);  
+        memset(testG, 0, sizeof(struct gameState));
+        initializeGame(numPlayers, k, seed, initG);
+        //Setting random number of cards in hand
          for (i = 0; i < numPlayers; i++){
             initG->handCount[i] = 0;
             for (j = 0; j < 10; j++){
@@ -126,6 +134,44 @@ int main(){
     delete2dArray(testResults, numRuns, numTests + 1);
     free(testG);
     free(initG);
+
+    // ----------- TEST 3: Randomizing player's hands --------------
+    printf("TEST 4: Randomizing discard piles, max num of cards = 10\n");
+    numRuns = 100;
+    numTests = 4;
+    testG = calloc(1, sizeof(struct gameState));
+    initG = calloc(1, sizeof(struct gameState));
+    testResults = init2dArray(numRuns, numTests + 1);
+    thisPlayer = 0;
+    numPlayers = 2;
+    // int m;
+    for(m = 0; m < numRuns; m++)
+    {
+        //Initializing test structs
+        memset(initG, 0, sizeof(struct gameState));
+        memset(testG, 0, sizeof(struct gameState));
+        initializeGame(numPlayers, k, seed, initG);
+        //Setting random number of cards in hand
+         for (i = 0; i < numPlayers; i++){
+            initG->handCount[i] = 0;
+            for (j = 0; j < 10; j++){
+                initG->hand[i][j] = randInt(estate, treasure_map); //1 = estate, 3 = province
+                initG->handCount[i]++;
+            }
+        }             
+        // copy the game state to a test case
+        memcpy(testG, initG, sizeof(struct gameState));
+        // //Playing card
+        choice3 = thisPlayer;
+        cardEffect(adventurer, choice1, choice2, choice3, testG, handpos, &bonus);
+        doAdventurerUnitTests(initG, testG, thisPlayer, k, testResults[m]);
+    }
+    printTestResults(testResults, numTests, numRuns, 0);
+    delete2dArray(testResults, numRuns, numTests + 1);
+    free(testG);
+    free(initG);
+
+
 
     return 0;
 }
