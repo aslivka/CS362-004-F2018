@@ -30,7 +30,8 @@ int main(){
 
     srand((time(NULL)));
 	printf("----------------- Testing Card: %s ----------------\n", TESTCARD);
-    printf("EXPECTED: All random tests should fail due to introduced bugs in Asst 2.\n\n");
+    printf("EXPECTED: All random tests should fail due to introduced bugs in Asst 2.\n");
+    printf("From Assignment 3, unit test 1 should fail\n\n");
 
     // ----------- TEST 1: Randomizing number of players  --------------
     printf("TEST 1: Randomizing number of players\n");
