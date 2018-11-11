@@ -141,7 +141,7 @@ int main(){
          for (i = 0; i < numPlayers; i++){
             initG.discardCount[i] = 0;
             for (j = 0; j < 5; j++){
-                initG.discard[i][j] = randInt(estate, gold); //1 = estate, 3 = province
+                initG.discard[i][j] = randInt(gold + 1, treasure_map); //1 = estate, 3 = province
                 initG.discardCount[i]++;
             }
         }             
