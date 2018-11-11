@@ -174,6 +174,7 @@ void printTestResults(int** testResults, int numTests, int numRuns){
         printf("TEST: PASSED\n", numPasses, numRuns);
     }
     else{
+        
         printf("TEST: FAILED\n", numPasses, numRuns);
     }
 }
