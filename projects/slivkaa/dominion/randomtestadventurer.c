@@ -164,7 +164,7 @@ void printTestResults(int** testResults, int numTests, int numRuns, int verbose)
             if(verbose == 1){
                 printf("Run %d PASSED", i + 1);
                 if(verbose == 2){
-                    printf(":")
+                    printf(", unit test results:");
                     for(j = 0; j < numTests; j++){
                         printf("%d\t",testResults[i][j]);
                     }
@@ -175,8 +175,9 @@ void printTestResults(int** testResults, int numTests, int numRuns, int verbose)
         }
         else{
             if(verbose == 1){
-                 printf("Run %d FAILED\n", i + 1);
+                printf("Run %d FAILED\n", i + 1);
                 if(verbose == 2){
+                    printf(", unit test results:");
                     for(j = 0; j < numTests; j++){
                         printf("%d\t",testResults[i][j]);
                     }
@@ -189,7 +190,7 @@ void printTestResults(int** testResults, int numTests, int numRuns, int verbose)
     printf("Test summary\n");
     printf("Number of passed tests: %d/%d passed\n", numPasses, numRuns);
     if(numPasses = numRuns && numPasses > 0){
-        printf("2. TEST SUCCESSFULLY COMPLETED\n");
+        printf("TEST SUCCESSFULLY COMPLETED\n");
     }
     else{
 
