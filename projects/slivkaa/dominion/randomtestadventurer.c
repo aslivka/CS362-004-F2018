@@ -29,13 +29,8 @@ int main(){
     int k[10] = {adventurer, embargo, village, minion, mine, cutpurse,
 			sea_hag, tribute, smithy, council_room};
 
-	// // initialize a game state and player cards
-	// initializeGame(numPlayers, k, seed, &initG);  
-    // // copy the game state to a test case
-    // memcpy(&testG, &initG, sizeof(struct gameState));
-    // //Playing card
-    // choice3 = thisPlayer;
-	// cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
+    int numRuns = 10, numTests = 4;
+    int** testResults;
 
 	printf("----------------- Testing Card: %s ----------------\n", TESTCARD);
     printf("EXPECTED: All random tests should fail due to introced bugs in Asst 2.\n");
@@ -43,8 +38,9 @@ int main(){
 
     // ----------- TEST 1: Randomizing number of players  --------------
     printf("TEST 1: Randomizing number of players\n");
-    int numRuns = 10, numTests = 4;
-    int** testResults = init2dArray(numRuns, numTests + 1);
+    numRuns = 10;
+    numTests = 4;
+    testResults = init2dArray(numRuns, numTests + 1);
     thisPlayer = 0;
     for(i = 0; i < numRuns; i++)
     {
@@ -62,8 +58,9 @@ int main(){
 
     // ----------- TEST 2: Randomizing number of players  --------------
     printf("TEST 2: Randomizing decks for all players, max number of cards = 10\n");
-    int numRuns = 100, numTests = 4;
-    int** testResults = init2dArray(numRuns, numTests + 1);
+    numRuns = 100;
+    numTests = 4;
+    testResults = init2dArray(numRuns, numTests + 1);
     thisPlayer = 0;
     numPlayers = 2;
     for(i = 0; i < numRuns; i++)
