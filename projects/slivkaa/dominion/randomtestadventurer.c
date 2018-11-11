@@ -32,9 +32,9 @@ int main(){
     int numRuns = 10, numTests = 4;
     int** testResults;
 
+    srand((time(NULL)));
 	printf("----------------- Testing Card: %s ----------------\n", TESTCARD);
     printf("EXPECTED: All random tests should fail due to introced bugs in Asst 2.\n");
-    srand((time(NULL)));
 
     // ----------- TEST 1: Randomizing number of players  --------------
     printf("TEST 1: Randomizing number of players\n");
@@ -65,6 +65,7 @@ int main(){
     numPlayers = 2;
     for(i = 0; i < numRuns; i++)
     {
+        printf("Init game\n, i=%d", i);
         initializeGame(numPlayers, k, seed, &initG);  
         //Setting random numbers of victory and treasure cards
         for (i = 0; i < numPlayers; i++){
