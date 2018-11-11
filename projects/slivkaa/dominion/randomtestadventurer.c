@@ -63,7 +63,7 @@ int main(){
     testResults = init2dArray(numRuns, numTests + 1);
     thisPlayer = 0;
     numPlayers = 2;
-    int m;
+    // int m;
     for(m = 0; m < numRuns; m++)
     {
         printf("Init game, i=%d\t", i);
