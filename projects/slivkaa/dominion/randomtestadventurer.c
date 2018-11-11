@@ -21,7 +21,7 @@ int main(){
      */  
     // int actual[4], expected[4], numPasses = 0;
     // int card;
-    int i, j, k;
+    int i, j, m;
     int handpos = 0, choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0;
     int seed = 1000;
     int numPlayers = 2, thisPlayer = 0;
@@ -68,15 +68,15 @@ int main(){
         printf("Init game, i=%d\t", i);
         initializeGame(numPlayers, k, seed, &initG);  
         //Setting random numbers of victory and treasure cards
-        for (k = 0; k < numPlayers; k++){
-            initG.deckCount[i] = 0;
+        for (m = 0; m < numPlayers; m++){
+            initG.deckCount[l] = 0;
             for (j = 0; j < 3; j++){
-                initG.deck[k][j] = randInt(estate, province); //1 = estate, 3 = province
-                initG.deckCount[k]++;
+                initG.deck[m][j] = randInt(estate, province); //1 = estate, 3 = province
+                initG.deckCount[m]++;
             }
             for (j = 3; j < 10; j++){
-                initG.deck[k][j] = randInt(copper, gold);   //4 = copper, 6=gold
-                initG.deckCount[k]++;		
+                initG.deck[m][j] = randInt(copper, gold);   //4 = copper, 6=gold
+                initG.deckCount[m]++;		
             }
         }       
         // copy the game state to a test case
