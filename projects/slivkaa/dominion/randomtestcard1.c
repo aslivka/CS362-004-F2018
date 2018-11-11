@@ -115,14 +115,14 @@ void runSmithyUnitTests(struct gameState* initG, struct gameState* testG, int th
     actual = testG->deckCount[thisPlayer];
     expected = initG->deckCount[thisPlayer] - newCards;
     if(actual == expected){
-        // printf("TEST 2: PASS drawn 3 cards came from player 1's own deck\n");
-        // printf("\tdeck count = %d, expected = %d\n", actual, expected);
+        printf("TEST 2: PASS drawn 3 cards came from player 1's own deck\n");
+        printf("\tdeck count = %d, expected = %d\n", actual, expected);
         testResults[1] = 1;
         testResults[6]++;
     }
     else{
-        // printf("TEST 2: FAIL drawn 3 cards didn't come from player 1's own deck\n");
-        // printf("\tdeck count = %d, expected = %d\n", actual, expected);
+        printf("TEST 2: FAIL drawn 3 cards didn't come from player 1's own deck\n");
+        printf("\tdeck count = %d, expected = %d\n", actual, expected);
     }
 
 	// ----------- TEST 3: player 2's deck/hand shouldn't change --------------

@@ -35,15 +35,13 @@ testLib: testLib.c testLib.h
 	gcc -c testLib.c -g  $(CFLAGS)
 
 runCardTests: randomtestadventurer.c  dominion.o rngs.o testLib.o
-	echo "----- Random Test Results for Adventurer Card -----" > randomtestadventurer.out
-	echo "Source file: randomtestadventurer.c" > randomtestadventurer.out
+	echo "Test file: randomtestadventurer.c" > randomtestadventurer.out
 	gcc -o randomtestadventurer -g randomtestadventurer.c  dominion.o rngs.o testLib.o $(CFLAGS)
 	./randomtestadventurer >> randomtestadventurer.out
 	gcov -b -f dominion.c | grep "playAdventurer" -B 0 -A 5 >> randomtestadventurer.out
 	gcov -b dominion.c >> randomtestadventurer.out
 
-	echo "----- Random Test Results for Smithy Card -----" > randomtestcard1.out
-	echo "Source file: randomtestcard1.c" >> randomtestcard1.out
+	echo "Test file: randomtestcard1.c" >> randomtestcard1.out
 	gcc -o randomtestcard1 -g randomtestcard1.c dominion.o rngs.o testLib.o $(CFLAGS)
 	./randomtestcard1 >> randomtestcard1.out
 	gcov -b dominion.c >> randomtestcard1.out
