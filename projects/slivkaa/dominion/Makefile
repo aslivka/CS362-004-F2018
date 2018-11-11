@@ -41,9 +41,10 @@ runCardTests: randomtestadventurer.c  dominion.o rngs.o testLib.o
 	gcov -b -f dominion.c | grep "playAdventurer" -B 0 -A 5 >> randomtestadventurer.out
 	gcov -b dominion.c >> randomtestadventurer.out
 
-	echo "Test file: randomtestcard1.c" >> randomtestcard1.out
+	echo "Test file: randomtestcard1.c" > randomtestcard1.out
 	gcc -o randomtestcard1 -g randomtestcard1.c dominion.o rngs.o testLib.o $(CFLAGS)
 	./randomtestcard1 >> randomtestcard1.out
+	gcov -b -f dominion.c | grep "playSmithy" -B 0 -A 5 >> randomtestcard1.out
 	gcov -b dominion.c >> randomtestcard1.out
 
 	# echo "----- Random Test Results for Adventurer Card -----" > randomtestcard2.out
