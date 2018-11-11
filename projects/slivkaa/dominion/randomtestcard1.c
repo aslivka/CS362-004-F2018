@@ -7,9 +7,8 @@
 
 #include "testLib.h"
 #define TESTCARD "Smithy"
-// void doAdventurerUnitTests(struct gameState* initG, struct gameState* testG, int thisPlayer, int k[10], int* testResults);
 void runSmithyUnitTests(struct gameState* initG, struct gameState* testG, int thisPlayer, int k[10], int* testResults);
-void printTestResults(int** testResults, int numTests, int numRuns, int verbose);
+void isDupCard(int* inArray, int size, int card);
 
 int main(){
 
@@ -158,6 +157,8 @@ int main(){
     testResults = init2dArray(numRuns, numTests + 1);
     thisPlayer = 0;
     numPlayers = 2;
+    int card;
+
     // int m;
     for(m = 0; m < numRuns; m++)
     {
@@ -165,7 +166,10 @@ int main(){
         memset(&initG, 0, sizeof(struct gameState));
         memset(&testG, 0, sizeof(struct gameState));
         for(i = 0; i < 10; i++){
-            k[i] = randInt(adventurer, sea_hag);
+            do{
+                card = randInt(adventurer, sea_hag);  
+            }while( isDupCard(k, 10, card) == 1);
+            k[i] = card;
         }    
         initializeGame(numPlayers, k, seed, &initG);  
         // copy the game state to a test case
@@ -181,6 +185,15 @@ int main(){
      return 0;
 }
 
+void isDupCard(int* inArray, int size, int card){
+    int j;
+    for(j = 0; j < size; i++){
+        if(inArray[j] == card){
+            return 1;
+        }
+    }
+    return 0;
+}
 
 void runSmithyUnitTests(struct gameState* initG, struct gameState* testG, int thisPlayer, int k[10], int* testResults){
     int actual, expected, i, j;
