@@ -8,7 +8,6 @@
 #include "testLib.h"
 #define TESTCARD "Village"
 void runVillageUnitTests(struct gameState* initG, struct gameState* testG, int thisPlayer, int k[10], int* testResults);
-int isDupCard(int* inArray, int size, int card);
 
 int main(){
 
@@ -144,20 +143,20 @@ int main(){
     delete2dArray(testResults, numRuns, numTests + 1);
 
     // ---------------------------------------------------------------------
-    printf("TEST 5: Randomizing number of initial player actions, range 0-100 \n");
+    printf("TEST 5: Randomizing number of initial actions, range 0-100 \n");
     numRuns = 100;
     numTests = 4;
     testResults = init2dArray(numRuns, numTests + 1);
     thisPlayer = 0;
     numPlayers = 2;
-    int card;
+    // int card;
     for(m = 0; m < numRuns; m++)
     {
         //Initializing game states
         memset(&initG, 0, sizeof(struct gameState));
         memset(&testG, 0, sizeof(struct gameState));
         initializeGame(numPlayers, k, seed, &initG);  
-        
+
         //Assigning random number of actions to player
         initG.numActions = randInt(0, 100);
 
@@ -172,16 +171,6 @@ int main(){
     delete2dArray(testResults, numRuns, numTests + 1);
 
      return 0;
-}
-
-int isDupCard(int* inArray, int size, int card){
-    int j;
-    for(j = 0; j < size; j++){
-        if(inArray[j] == card){
-            return 1;
-        }
-    }
-    return 0;
 }
 
 void runVillageUnitTests(struct gameState* initG, struct gameState* testG, int thisPlayer, int k[10], int* testResults){

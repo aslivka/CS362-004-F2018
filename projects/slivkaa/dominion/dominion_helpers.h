@@ -18,5 +18,6 @@ void playCouncilRoom(struct gameState *state, int handPos, int currentPlayer);
 void playFeast(struct gameState *state, int choice1, int *temphand, int currentPlayer);
 void playSmithy(struct gameState *state, int handPos, int currentPlayer);
 void playSteward(struct gameState *state, int choice1, int choice2, int choice3, int handPos, int currentPlayer);
+void playVillage(struct gameState *state, int handPos, int currentPlayer);
 
 #endif
