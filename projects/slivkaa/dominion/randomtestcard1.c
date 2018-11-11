@@ -57,38 +57,102 @@ int main(){
     printTestResults(testResults, numTests, numRuns, 0);
     delete2dArray(testResults, numRuns, numTests + 1);
 
-    // // ----------- TEST 2: Randomizing player's decks --------------
-    // printf("TEST 2: Randomizing deck piles, max number of cards = 100\n");
-    // numRuns = 100;
-    // numTests = 6;
-    // testResults = init2dArray(numRuns, numTests + 1);
-    // thisPlayer = 0;
-    // numPlayers = 2;
-    // for(m = 0; m < numRuns; m++)
-    // {
-    //     //Initializing game states
-    //     memset(&initG, 0, sizeof(struct gameState));
-    //     memset(&testG, 0, sizeof(struct gameState));
-    //     initializeGame(numPlayers, k, seed, &initG);  
-    //     //Setting random numbers of victory and treasure cards
-    //     for (i = 0; i < numPlayers; i++){
-    //         initG.deckCount[i] = 0;
-    //         for (j = 0; j < 100; j++){
-    //             initG.deck[i][j] = randInt(estate, treasure_map); //1 = estate, 3 = province
-    //             initG.deckCount[i]++;
-    //         }
-    //     }       
-    //     // copy the game state to a test case
-    //     memcpy(&testG, &initG, sizeof(struct gameState));
-    //     // //Playing card
-    //     choice3 = thisPlayer;
-    //     cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
-    //     doAdventurerUnitTests(&initG, &testG, thisPlayer, k, testResults[m]);
-    // }
-    // printTestResults(testResults, numTests, numRuns, 0);
-    // delete2dArray(testResults, numRuns, numTests + 1);
+     // ----------- TEST 2: Randomizing player's decks --------------
+    printf("TEST 2: Randomizing deck piles, max number of cards = 100\n");
+    numRuns = 100;
+    numTests = 4;
+    testResults = init2dArray(numRuns, numTests + 1);
+    thisPlayer = 0;
+    numPlayers = 2;
+    for(m = 0; m < numRuns; m++)
+    {
+        //Initializing game states
+        memset(&initG, 0, sizeof(struct gameState));
+        memset(&testG, 0, sizeof(struct gameState));
+        initializeGame(numPlayers, k, seed, &initG);  
+        //Setting random numbers of victory and treasure cards
+        for (i = 0; i < numPlayers; i++){
+            initG.deckCount[i] = 0;
+            for (j = 0; j < 100; j++){
+                initG.deck[i][j] = randInt(estate, treasure_map); //1 = estate, 3 = province
+                initG.deckCount[i]++;
+            }
+        }       
+        // copy the game state to a test case
+        memcpy(&testG, &initG, sizeof(struct gameState));
+        // //Playing card
+        choice3 = thisPlayer;
+        cardEffect(smithy, choice1, choice2, choice3, &testG, handpos, &bonus);
+        runSmithyUnitTests(&initG, &testG, thisPlayer, k, testResults[m]);
+    }
+    printTestResults(testResults, numTests, numRuns, 0);
+    delete2dArray(testResults, numRuns, numTests + 1);
 
-    return 0;
+    // // ----------- TEST 3: Randomizing player's hand piles --------------
+    printf("TEST 3: Randomizing hand piles, max num of cards = 10\n");
+    numRuns = 100;
+    numTests = 4;
+    testResults = init2dArray(numRuns, numTests + 1);
+    thisPlayer = 0;
+    numPlayers = 2;
+    for(m = 0; m < numRuns; m++)
+    {
+        //Initializing game states
+        memset(&initG, 0, sizeof(struct gameState));
+        memset(&testG, 0, sizeof(struct gameState));
+        initializeGame(numPlayers, k, seed, &initG);
+        //Setting random number of cards in hand pale
+         for (i = 0; i < numPlayers; i++){
+            initG.handCount[i] = 0;
+            for (j = 0; j < 10; j++){
+                initG.hand[i][j] = randInt(estate, treasure_map); //1 = estate, 3 = province
+                initG.handCount[i]++;
+            }
+        }             
+        // copy the game state to a test case
+        memcpy(&testG, &initG, sizeof(struct gameState));
+        // //Playing card
+        choice3 = thisPlayer;
+        cardEffect(smithy, choice1, choice2, choice3, &testG, handpos, &bonus);
+        runSmithyUnitTests(&initG, &testG, thisPlayer, k, testResults[m]);
+    }
+    printTestResults(testResults, numTests, numRuns, 0);
+    delete2dArray(testResults, numRuns, numTests + 1);
+
+    // ----------- TEST 3: Randomizing player's discard piles --------------
+    printf("TEST 4: Randomizing discard piles, max num of cards = 10\n");
+    numRuns = 100;
+    numTests = 4;
+    testResults = init2dArray(numRuns, numTests + 1);
+    thisPlayer = 0;
+    numPlayers = 2;
+    // int m;
+    for(m = 0; m < numRuns; m++)
+    {
+        //Initializing game states
+        memset(&initG, 0, sizeof(struct gameState));
+        memset(&testG, 0, sizeof(struct gameState));
+        initializeGame(numPlayers, k, seed, &initG);
+        //Setting random number of cards in discard pile
+         for (i = 0; i < numPlayers; i++){
+            initG.discardCount[i] = 0;
+            for (j = 0; j < 5; j++){
+                initG.discard[i][j] = randInt(gold + 1, treasure_map); 
+                initG.discardCount[i]++;
+            }
+        }             
+        // copy the game state to a test case
+        memcpy(&testG, &initG, sizeof(struct gameState));
+        // //Playing card
+        choice3 = thisPlayer;
+        cardEffect(smithy, choice1, choice2, choice3, &testG, handpos, &bonus);
+        runSmithyUnitTests(&initG, &testG, thisPlayer, k, testResults[m]);
+    }
+    printTestResults(testResults, numTests, numRuns, 0);
+    delete2dArray(testResults, numRuns, numTests + 1);
+
+
+     return 0;
 }
 
 
@@ -116,14 +180,14 @@ void runSmithyUnitTests(struct gameState* initG, struct gameState* testG, int th
     actual = testG->deckCount[thisPlayer];
     expected = initG->deckCount[thisPlayer] - newCards;
     if(actual == expected){
-        printf("TEST 2: PASS drawn 3 cards came from player 1's own deck\n");
-        printf("\tdeck count = %d, expected = %d\n", actual, expected);
+        // printf("TEST 2: PASS drawn 3 cards came from player 1's own deck\n");
+        // printf("\tdeck count = %d, expected = %d\n", actual, expected);
         testResults[1] = 1;
         testResults[6]++;
     }
     else{
-        printf("TEST 2: FAIL drawn 3 cards didn't come from player 1's own deck\n");
-        printf("\tdeck count = %d, expected = %d\n", actual, expected);
+        // printf("TEST 2: FAIL drawn 3 cards didn't come from player 1's own deck\n");
+        // printf("\tdeck count = %d, expected = %d\n", actual, expected);
     }
 
 	// ----------- TEST 3: player 2's deck/hand shouldn't change --------------
