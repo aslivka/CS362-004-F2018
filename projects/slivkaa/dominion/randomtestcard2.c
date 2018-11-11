@@ -189,8 +189,8 @@ int isDupCard(int* inArray, int size, int card){
 
 void runVillageUnitTests(struct gameState* initG, struct gameState* testG, int thisPlayer, int k[10], int* testResults){
     int actual[3], expected[3]
-    expected[0] = initG.deckCount[thisPlayer] - 1;
-    actual[0] = testG.deckCount[thisPlayer];
+    expected[0] = initG->deckCount[thisPlayer] - 1;
+    actual[0] = testG->deckCount[thisPlayer];
     if( (expected[0] == actual[0])  ){ 
         // printf("TEST 1: PASS player 1 draws +1 card from deck\n");
         // printf("\tdeck card count = %d, expected = %d\n", actual[0], expected[0]);
@@ -203,8 +203,8 @@ void runVillageUnitTests(struct gameState* initG, struct gameState* testG, int t
     }
 
 	// ----------- TEST 2: player 1 gains +2 actions --------------
-    expected[0] = initG.numActions + 2;
-    actual[0] = testG.numActions;
+    expected[0] = initG->numActions + 2;
+    actual[0] = testG->numActions;
     if(expected[0] == actual[0]){ 
         // printf("TEST 2: PASS player 1 gains +2 actions\n");
         // printf("\tnum of actions = %d, expected = %d\n", actual[0], expected[0]);
@@ -217,10 +217,10 @@ void runVillageUnitTests(struct gameState* initG, struct gameState* testG, int t
     }
 
     // ----------- TEST 3: player 1 discards village card from hand --------------
-    expected[0] = initG.playedCardCount + 1;
-    expected[1] = initG.handCount[thisPlayer];
-    actual[0] = testG.playedCardCount;
-    actual[1] = testG.handCount[thisPlayer];
+    expected[0] = initG->playedCardCount + 1;
+    expected[1] = initG->handCount[thisPlayer];
+    actual[0] = testG->playedCardCount;
+    actual[1] = testG->handCount[thisPlayer];
     if( (actual[0] == expected[0]) && (actual[1] == expected[1]) ){ 
         // printf("TEST 3: PASS player 1 discards village card from hand\n");
         // printf("\tnum of playedCards = %d, expected = %d\n", actual[0], expected[0]);
@@ -235,10 +235,10 @@ void runVillageUnitTests(struct gameState* initG, struct gameState* testG, int t
     }
 
     // ----------- TEST 4: check state changes to other player's decks/hands --------------
-    expected[0] = initG.handCount[thisPlayer+1];
-    expected[1] = initG.deckCount[thisPlayer+1];
-    actual[0] = testG.handCount[thisPlayer+1];
-    actual[1] = testG.deckCount[thisPlayer+1];
+    expected[0] = initG->handCount[thisPlayer+1];
+    expected[1] = initG->deckCount[thisPlayer+1];
+    actual[0] = testG->handCount[thisPlayer+1];
+    actual[1] = testG->deckCount[thisPlayer+1];
 
     if( (actual[0] == expected[0]) && (actual[1] == expected[1]) ){ 
         // printf("TEST 4: PASS no state change occured to other player's deck/hand\n");
@@ -246,7 +246,6 @@ void runVillageUnitTests(struct gameState* initG, struct gameState* testG, int t
         // printf("\tdeck count = %d, expected = %d\n", actual[1], expected[1]);
         testResults[3] = 1;
         testResults[4]++;
-
     }
     else{
         // printf("TEST 4: FAIL state change occured to other player's deck/hand\n");
