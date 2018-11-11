@@ -87,104 +87,9 @@ int main(){
     // printTestResults(testResults, numTests, numRuns, 0);
     // delete2dArray(testResults, numRuns, numTests + 1);
 
-   
-
-   
     return 0;
 }
 
-// void doAdventurerUnitTests(struct gameState* initG, struct gameState* testG, int thisPlayer, int k[10], int* testResults){
-//     int i, j;
-//     int actual[4], expected[4];
-//     int card;
-
-//     // ----------- TEST 1: player should have +2 treasure cards in his hand  --------------
-//     int numTreasures = 0;
-//     for(i = initG->handCount[thisPlayer] - 1; i < testG->handCount[thisPlayer]; i++){
-//         card = testG->hand[thisPlayer][i];
-//         if(card == copper || card == silver || card == gold){
-//             numTreasures +=1;
-//         }
-//     }
-//     expected[0] = 2;
-//     expected[1] = (initG->handCount[thisPlayer] + 2);
-//     actual[0] = numTreasures;
-//     actual[1] = testG->handCount[thisPlayer];
-//     if( (actual[0] == expected[0]) && (actual[1] == expected[1]) ){ 
-//         // printf("TEST 1: PASS player 1 has +2 treasure cards in his hand \n");
-//         testResults[0] = 1;
-//         testResults[4]++;
-//     }
-//     else{
-//         // printf("TEST 1: FAIL player 1 doesn't have +2 treasure cards in his hand\n");
-//     }
-
-//     // ----------- TEST 2: All drawn cards (except 2 treasure cards) should be moved to discard pile --------------
-//     expected[0] = 0;
-//     actual[0] = testG->discardCount[thisPlayer] - initG->discardCount[thisPlayer];
-//     if(expected[0] <= actual[0]){
-//         // printf("TEST 2: PASS all non-treasure cards drawn were moved to discard pile\n");
-//         // printf("\tdiscarded count = %d, expected >= %d\n", actual[0], expected[0]);
-//         testResults[1] = 1;
-//         testResults[4]++;
-//     }
-//     else{
-//         // printf("TEST 2: FAIL all non-treasure cards drawn were not moved to discard pile\n");
-//         // printf("\tdiscarded count = %d, expected >= %d\n", actual[0], expected[0]);
-//     }
-
-//     // ----------- TEST 3: No state change should occur to kingdom card piles. --------------
-//     actual[0] = expected[0] = 0;
-//     for (i = adventurer; i <= treasure_map; i++)       	//loop all cards
-//     {
-//         for (j = 0; j < 10; j++)           		//loop chosen cards
-//         {
-//             if (k[j] == i)
-//             {
-//                 actual[0] +=testG->supplyCount[i];
-//                 expected[0] += initG->supplyCount[i];
-//                 break;
-//             }
-//         }
-//     }
-//     if(expected[0] == actual[0]){ 
-//         // printf("TEST 3: PASS No state change occured to kingdom card piles\n");
-//         testResults[2] = 1;
-//         testResults[4]++;
-//     }
-//     else{
-//         // printf("TEST 3: FAIL State change occured to kingdom card piles\n");
-//     }
-
-//     // ----------- TEST 4: No state change should occur to other's players hand and deck piles. --------------   
-//     expected[0] = initG->handCount[thisPlayer+1];
-//     actual[0]= testG->handCount[thisPlayer+1];
-//     expected[1] = initG->deckCount[thisPlayer+1];
-//     actual[1] = testG->deckCount[thisPlayer+1];
-//     actual[2] = actual[3] = 0;
-//     if(expected[0] == actual[0]){
-//         for(i = 0; i < expected[0]; i++){
-//             if(initG->hand[thisPlayer+1][i] != testG->hand[thisPlayer+1][i]){
-//                 actual[2]++;
-//             }
-//         }
-//     }
-//     if(expected[1] == actual[1]){
-//         for(i = 0; i < expected[1]; i++){
-//             if(initG->deck[thisPlayer+1][i] != testG->deck[thisPlayer+1][i]){
-//                 actual[3]++;
-//             }
-//         }
-//     }
-//     if( (actual[2] == 0) && (actual[3] == 0) && (expected[0] == actual[0]) && (expected[1] == actual[1]) ){ 
-//         // printf("TEST 4: PASS No state change occured to player 2's hand and deck piles\n");
-//         testResults[3] = 1;
-//         testResults[4]++;
-//     }
-//     else{
-//         // printf("TEST 4: FAIL State change occured to player 2's hand and deck piles\n");
-//     }
-// }
 
 void runSmithyUnitTests(struct gameState* initG, struct gameState* testG, int thisPlayer, int k[10], int* testResults){
     int actual, expected, numPasses = 0;
@@ -193,13 +98,13 @@ void runSmithyUnitTests(struct gameState* initG, struct gameState* testG, int th
 
     // ----------- TEST 1: player should receive exactly 3 cards --------------
     newCards = 3;
-    actual = testG.handCount[thisPlayer];
-    expected = initG.handCount[thisPlayer] + newCards;
+    actual = testG->handCount[thisPlayer];
+    expected = initG->handCount[thisPlayer] + newCards;
     if(actual == expected){
         // printf("TEST 1: PASS player 1 received exactly 3 cards\n");
         // printf("\thand count = %d, expected = %d\n", actual, expected);
         testResults[0] = 1;
-        testResults[7]++;
+        testResults[6]++;
     }
     else{
         // printf("TEST 1: FAIL current player didnt' receive exactly 3 cards\n");
@@ -207,13 +112,13 @@ void runSmithyUnitTests(struct gameState* initG, struct gameState* testG, int th
     }
 
 	// ----------- TEST 2: player 1's card should come from his own deck --------------
-    actual = testG.deckCount[thisPlayer];
-    expected = initG.deckCount[thisPlayer] - newCards;
+    actual = testG->deckCount[thisPlayer];
+    expected = initG->deckCount[thisPlayer] - newCards;
     if(actual == expected){
         // printf("TEST 2: PASS drawn 3 cards came from player 1's own deck\n");
         // printf("\tdeck count = %d, expected = %d\n", actual, expected);
         testResults[1] = 1;
-        testResults[7]++;
+        testResults[6]++;
     }
     else{
         // printf("TEST 2: FAIL drawn 3 cards didn't come from player 1's own deck\n");
@@ -221,13 +126,13 @@ void runSmithyUnitTests(struct gameState* initG, struct gameState* testG, int th
     }
 
 	// ----------- TEST 3: player 2's deck/hand shouldn't change --------------
-    actual = testG.deckCount[thisPlayer+1] + testG.handCount[thisPlayer+1];
-    expected = initG.deckCount[thisPlayer+1] + initG.handCount[thisPlayer+1];
+    actual = testG->deckCount[thisPlayer+1] + testG->handCount[thisPlayer+1];
+    expected = initG->deckCount[thisPlayer+1] + initG->handCount[thisPlayer+1];
     if(actual == expected){
         // printf("TEST 3: PASS player 2's deck and hand count didn't change\n");
         // printf("\tdeck+hand count = %d, expected = %d\n", actual, expected);
         testResults[2] = 1;
-        testResults[7]++;
+        testResults[6]++;
     }
     else{
         // printf("TEST 3: FAIL player 2's deck and hand count changed\n");
@@ -236,12 +141,12 @@ void runSmithyUnitTests(struct gameState* initG, struct gameState* testG, int th
 
     // ----------- TEST 4: played smithy card was discarded --------------
     expected = 1;
-    actual = ((initG.playedCardCount + discarded) == testG.playedCardCount) &&  ((initG.handCount[thisPlayer] - discarded)  == testG.handCount[thisPlayer]);
+    actual = ((initG->playedCardCount + discarded) == testG->playedCardCount) &&  ((initG->handCount[thisPlayer] - discarded)  == testG->handCount[thisPlayer]);
     if(actual == expected){
         // printf("TEST 4: PASS smithy card was discarded after play\n");
         // printf("\tdiscarded?= %d, expected = %d\n", actual, expected);
         testResults[3] = 1;
-        testResults[7]++;
+        testResults[6]++;
     }
     else{
         // printf("TEST 4: FAIL smithy card wasn't discarded after play\n");
@@ -249,13 +154,13 @@ void runSmithyUnitTests(struct gameState* initG, struct gameState* testG, int th
     }
 
     // ----------- TEST 5: No state change should occur to the victory card piles --------------
-    actual = testG.supplyCount[estate] + testG.supplyCount[duchy] + testG.supplyCount[province];
-    expected = initG.supplyCount[estate] + initG.supplyCount[duchy] + initG.supplyCount[province];
+    actual = testG->supplyCount[estate] + testG->supplyCount[duchy] + testG->supplyCount[province];
+    expected = initG->supplyCount[estate] + initG->supplyCount[duchy] + initG->supplyCount[province];
     if(actual == expected){
         // printf("TEST 5: PASS No state change occurred to the victory card piles\n");
         // printf("\ttotal V cards  = %d, expected = %d\n", actual, expected);
         testResults[4] = 1;
-        testResults[7]++;
+        testResults[6]++;
     }
     else{
         // printf("TEST 5: FAIL state change occured to the victory card piles\n");
@@ -270,8 +175,8 @@ void runSmithyUnitTests(struct gameState* initG, struct gameState* testG, int th
         {
             if (k[j] == i)
             {
-                actual +=testG.supplyCount[i];
-                expected += initG.supplyCount[i];
+                actual +=testG->supplyCount[i];
+                expected += initG->supplyCount[i];
                 break;
             }
         }
@@ -280,7 +185,7 @@ void runSmithyUnitTests(struct gameState* initG, struct gameState* testG, int th
         // printf("TEST 6: PASS No state change occurred to the kingdom card piles\n");
         // printf("\ttotal K cards  = %d, expected = %d\n", actual, expected);
         testResults[5] = 1;
-        testResults[7]++;
+        testResults[6]++;
     }
     else{
         // printf("TEST 6: FAIL state change occured to the kingdom card piles\n");
