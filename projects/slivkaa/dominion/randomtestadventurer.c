@@ -34,7 +34,7 @@ int main(){
 
     srand((time(NULL)));
 	printf("----------------- Testing Card: %s ----------------\n", TESTCARD);
-    printf("EXPECTED: All random tests should fail due to introduced bugs in Asst 2.\n");
+    printf("EXPECTED: All random tests should fail due to introduced bugs in Asst 2.\n\n");
 
     // ----------- TEST 1: Randomizing number of players  --------------
     printf("TEST 1: Randomizing number of players\n");
@@ -61,7 +61,7 @@ int main(){
     free(initG);
 
     // ----------- TEST 2: Randomizing player's decks --------------
-    printf("TEST 2: Randomizing decks for all players, max number of cards = 30\n");
+    printf("TEST 2: Randomizing decks for all players, max number of cards = 100\n");
     numRuns = 100;
     numTests = 4;
     testG = calloc(1, sizeof(struct gameState));
@@ -94,7 +94,7 @@ int main(){
     free(initG);
 
     // ----------- TEST 3: Randomizing player's hands --------------
-    printf("TEST 3: Randomizing hands for all players\n");
+    printf("TEST 3: Randomizing hands for all players, max num of cards = 10\n");
     numRuns = 100;
     numTests = 4;
     testG = calloc(1, sizeof(struct gameState));
@@ -106,6 +106,7 @@ int main(){
     for(m = 0; m < numRuns; m++)
     {
         //Setting random number of cards in hand
+        memset(initG, 0, sizeof(struct gameState));
         initializeGame(numPlayers, k, seed, initG);  
          for (i = 0; i < numPlayers; i++){
             initG->handCount[i] = 0;
