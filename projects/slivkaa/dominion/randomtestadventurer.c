@@ -33,7 +33,7 @@ int main(){
     printf("EXPECTED: All random tests should fail due to introduced bugs in Asst 2.\n");
     printf("From Assignment 3, unit test 1 should fail\n\n");
 
-    // ----------- TEST 1: Randomizing number of players  --------------
+    // ---------------------------------------------------------------------
     printf("TEST 1: Randomizing number of players\n");
     numRuns = 10;
     numTests = 4;
@@ -56,7 +56,7 @@ int main(){
     printTestResults(testResults, numTests, numRuns, 0);
     delete2dArray(testResults, numRuns, numTests + 1);
 
-    // ----------- TEST 2: Randomizing player's decks --------------
+    // ---------------------------------------------------------------------
     printf("TEST 2: Randomizing deck piles, max number of cards = 100\n");
     numRuns = 100;
     numTests = 4;
@@ -87,7 +87,7 @@ int main(){
     printTestResults(testResults, numTests, numRuns, 0);
     delete2dArray(testResults, numRuns, numTests + 1);
 
-    // // ----------- TEST 3: Randomizing player's hand piles --------------
+    // ---------------------------------------------------------------------
     printf("TEST 3: Randomizing hand piles, max num of cards = 10\n");
     numRuns = 100;
     numTests = 4;
@@ -118,14 +118,13 @@ int main(){
     printTestResults(testResults, numTests, numRuns, 0);
     delete2dArray(testResults, numRuns, numTests + 1);
 
-    // ----------- TEST 3: Randomizing player's discard piles --------------
+    // ---------------------------------------------------------------------
     printf("TEST 4: Randomizing discard piles, max num of cards = 10\n");
     numRuns = 100;
     numTests = 4;
     testResults = init2dArray(numRuns, numTests + 1);
     thisPlayer = 0;
     numPlayers = 2;
-    // int m;
     for(m = 0; m < numRuns; m++)
     {
         //Initializing game states

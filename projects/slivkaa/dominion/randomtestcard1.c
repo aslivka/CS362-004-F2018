@@ -34,7 +34,7 @@ int main(){
     printf("EXPECTED OUTPUT: All random tests should fail due to introduced bugs in Asst 2.\n");
     printf("From Assignment 3, unit test 4 should fail\n\n");
 
-    // ----------- TEST 1: Randomizing number of players  --------------
+    // ---------------------------------------------------------------------
     printf("TEST 1: Randomizing number of players\n");
     numRuns = 10;
     numTests = 6;
@@ -57,7 +57,7 @@ int main(){
     printTestResults(testResults, numTests, numRuns, 0);
     delete2dArray(testResults, numRuns, numTests + 1);
 
-     // ----------- TEST 2: Randomizing player's decks --------------
+    // ---------------------------------------------------------------------
     printf("TEST 2: Randomizing deck piles, max number of cards = 100\n");
     numRuns = 100;
     numTests = 6;
@@ -88,7 +88,7 @@ int main(){
     printTestResults(testResults, numTests, numRuns, 0);
     delete2dArray(testResults, numRuns, numTests + 1);
 
-    // // ----------- TEST 3: Randomizing player's hand piles --------------
+    // ---------------------------------------------------------------------
     printf("TEST 3: Randomizing hand piles, max num of cards = 10\n");
     numRuns = 100;
     numTests = 6;
@@ -119,7 +119,7 @@ int main(){
     printTestResults(testResults, numTests, numRuns, 0);
     delete2dArray(testResults, numRuns, numTests + 1);
 
-    // ----------- TEST 3: Randomizing player's discard piles --------------
+    // ---------------------------------------------------------------------
     printf("TEST 4: Randomizing discard piles, max num of cards = 10\n");
     numRuns = 100;
     numTests = 6;
@@ -151,6 +151,32 @@ int main(){
     printTestResults(testResults, numTests, numRuns, 0);
     delete2dArray(testResults, numRuns, numTests + 1);
 
+    // ---------------------------------------------------------------------
+    printf("TEST 4: Randomizing kingdom cards, max num of cards = 10\n");
+    numRuns = 100;
+    numTests = 6;
+    testResults = init2dArray(numRuns, numTests + 1);
+    thisPlayer = 0;
+    numPlayers = 2;
+    // int m;
+    for(m = 0; m < numRuns; m++)
+    {
+        //Initializing game states
+        memset(&initG, 0, sizeof(struct gameState));
+        memset(&testG, 0, sizeof(struct gameState));
+        initializeGame(numPlayers, k, seed, &initG);
+        for(i = 0; i < 10; i++){
+            k[i] = randInt(adventurer, sea_hag);
+        }    
+        // copy the game state to a test case
+        memcpy(&testG, &initG, sizeof(struct gameState));
+        // //Playing card
+        choice3 = thisPlayer;
+        cardEffect(smithy, choice1, choice2, choice3, &testG, handpos, &bonus);
+        runSmithyUnitTests(&initG, &testG, thisPlayer, k, testResults[m]);
+    }
+    printTestResults(testResults, numTests, numRuns, 0);
+    delete2dArray(testResults, numRuns, numTests + 1);
 
      return 0;
 }
