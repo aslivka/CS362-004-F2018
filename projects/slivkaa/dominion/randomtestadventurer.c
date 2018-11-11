@@ -69,7 +69,7 @@ int main(){
         initializeGame(numPlayers, k, seed, &initG);  
         //Setting random numbers of victory and treasure cards
         for (m = 0; m < numPlayers; m++){
-            initG.deckCount[l] = 0;
+            initG.deckCount[m] = 0;
             for (j = 0; j < 3; j++){
                 initG.deck[m][j] = randInt(estate, province); //1 = estate, 3 = province
                 initG.deckCount[m]++;
