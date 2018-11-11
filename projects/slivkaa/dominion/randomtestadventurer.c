@@ -56,7 +56,7 @@ int main(){
     printTestResults(testResults, numTests, numRuns, 1);
     delete2dArray(testResults, numRuns, numTests + 1);
 
-    // ----------- TEST 2: Randomizing number of players  --------------
+    // ----------- TEST 2: Randomizing player's decks --------------
     printf("TEST 2: Randomizing decks for all players, max number of cards = 10\n");
     numRuns = 100;
     numTests = 4;
@@ -65,7 +65,7 @@ int main(){
     numPlayers = 2;
     for(i = 0; i < numRuns; i++)
     {
-        printf("Init game\n, i=%d", i);
+        printf("Init game, i=%d\t", i);
         initializeGame(numPlayers, k, seed, &initG);  
         //Setting random numbers of victory and treasure cards
         for (i = 0; i < numPlayers; i++){
@@ -81,10 +81,10 @@ int main(){
         }       
         // copy the game state to a test case
         memcpy(&testG, &initG, sizeof(struct gameState));
-        //Playing card
+        // //Playing card
         choice3 = thisPlayer;
         cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
-        doAdventurerUnitTests(&initG, &testG, thisPlayer, k, testResults[i]);
+        // doAdventurerUnitTests(&initG, &testG, thisPlayer, k, testResults[i]);
     }
     printTestResults(testResults, numTests, numRuns, 1);
     delete2dArray(testResults, numRuns, numTests + 1);
