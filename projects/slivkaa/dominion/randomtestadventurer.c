@@ -71,11 +71,11 @@ int main(){
         for (i = 0; i < numPlayers; i++){
             initG.deckCount[i] = 0;
             for (j = 0; j < 3; j++){
-                initG.deck[i][j] = randInt(estate, province);
+                initG.deck[i][j] = randInt(1, 3); //1 = estate, 3 = province
                 initG.deckCount[i]++;
             }
             for (j = 3; j < 10; j++){
-                initG.deck[i][j] = randInt(copper, gold);
+                initG.deck[i][j] = randInt(4, 6);   //4 = copper, 6=gold
                 initG.deckCount[i]++;		
             }
         }       
