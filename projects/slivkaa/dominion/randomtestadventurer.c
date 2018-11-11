@@ -38,6 +38,7 @@ int main(){
 	// cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
 
 	printf("----------------- Testing Card: %s ----------------\n", TESTCARD);
+    printf("EXPECTED: All random tests should fail due to introced bugs in Asst 2.\n");
     srand((time(NULL)));
 
     // ----------- TEST 1: Randomizing number of players  --------------
@@ -49,6 +50,37 @@ int main(){
     {
         numPlayers = randInt(2, 4);
         initializeGame(numPlayers, k, seed, &initG);  
+        // copy the game state to a test case
+        memcpy(&testG, &initG, sizeof(struct gameState));
+        //Playing card
+        choice3 = thisPlayer;
+        cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
+        doAdventurerUnitTests(&initG, &testG, thisPlayer, k, testResults[i]);
+    }
+    printTestResults(testResults, numTests, numRuns, 1);
+    delete2dArray(testResults, numRuns, numTests + 1);
+
+    // ----------- TEST 2: Randomizing number of players  --------------
+    printf("TEST 2: Randomizing decks for all players, max number of cards = 10\n");
+    int numRuns = 100, numTests = 4;
+    int** testResults = init2dArray(numRuns, numTests + 1);
+    thisPlayer = 0;
+    numPlayers = 2;
+    for(i = 0; i < numRuns; i++)
+    {
+        initializeGame(numPlayers, k, seed, &initG);  
+        //Setting random numbers of victory and treasure cards
+        for (i = 0; i < numPlayers; i++){
+            initG->deckCount[i] = 0;
+            for (j = 0; j < 3; j++){
+                initG->deck[i][j] = randInt(estate, province);
+                initG->deckCount[i]++;
+            }
+            for (j = 3; j < 10; j++){
+                initG->deck[i][j] = randInt(copper, gold);
+                initG->deckCount[i]++;		
+            }
+        }       
         // copy the game state to a test case
         memcpy(&testG, &initG, sizeof(struct gameState));
         //Playing card
@@ -187,8 +219,8 @@ void printTestResults(int** testResults, int numTests, int numRuns, int verbose)
         }
     }
     //Print summary
-    printf("Test summary\n");
-    printf("Number of passed tests: %d/%d passed\n", numPasses, numRuns);
+    printf("---Test summary\n");
+    printf("---Number of passed test runs: %d/%d runs\n", numPasses, numRuns);
     if(numPasses = numRuns && numPasses > 0){
         printf("TEST SUCCESSFULLY COMPLETED\n");
     }
