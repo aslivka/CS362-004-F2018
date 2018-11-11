@@ -164,10 +164,10 @@ int main(){
         //Initializing game states
         memset(&initG, 0, sizeof(struct gameState));
         memset(&testG, 0, sizeof(struct gameState));
-        initializeGame(numPlayers, k, seed, &initG);
         for(i = 0; i < 10; i++){
             k[i] = randInt(adventurer, sea_hag);
         }    
+        initializeGame(numPlayers, k, seed, &initG);  
         // copy the game state to a test case
         memcpy(&testG, &initG, sizeof(struct gameState));
         // //Playing card
