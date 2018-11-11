@@ -115,7 +115,7 @@ int main(){
             }
         }             
         // copy the game state to a test case
-        memcpy(testG, &nitG, sizeof(struct gameState));
+        memcpy(testG, initG, sizeof(struct gameState));
         // //Playing card
         choice3 = thisPlayer;
         cardEffect(adventurer, choice1, choice2, choice3, testG, handpos, &bonus);
