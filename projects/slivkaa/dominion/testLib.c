@@ -118,6 +118,7 @@ int** init2dArray(int rows, int cols){
     for(i = 0; i < rows; i++){
         array[i] = calloc(cols, sizeof(int));
     }
+    return array;
 }
 
 void delete2dArray(int** array, int rows, int cols){
