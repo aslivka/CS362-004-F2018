@@ -175,7 +175,7 @@ void printTestResults(int** testResults, int numTests, int numRuns, int verbose)
         }
         else{
             if(verbose == 1){
-                printf("Run %d FAILED\n", i + 1);
+                printf("Run %d FAILED", i + 1);
                 if(verbose == 2){
                     printf(", unit test results:");
                     for(j = 0; j < numTests; j++){
