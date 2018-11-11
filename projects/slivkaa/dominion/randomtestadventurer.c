@@ -71,14 +71,14 @@ int main(){
         initializeGame(numPlayers, k, seed, &initG);  
         //Setting random numbers of victory and treasure cards
         for (i = 0; i < numPlayers; i++){
-            initG->deckCount[i] = 0;
+            initG.deckCount[i] = 0;
             for (j = 0; j < 3; j++){
-                initG->deck[i][j] = randInt(estate, province);
-                initG->deckCount[i]++;
+                initG.deck[i][j] = randInt(estate, province);
+                initG.deckCount[i]++;
             }
             for (j = 3; j < 10; j++){
-                initG->deck[i][j] = randInt(copper, gold);
-                initG->deckCount[i]++;		
+                initG.deck[i][j] = randInt(copper, gold);
+                initG.deckCount[i]++;		
             }
         }       
         // copy the game state to a test case
