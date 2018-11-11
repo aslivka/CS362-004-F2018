@@ -215,9 +215,9 @@ void printTestResults(int** testResults, int numTests, int numRuns, int verbose)
                 printf("\n");
             }
         }
-        for(k = 0; k < numTests; i++){
+        for(k = 0; k < numTests; k++){
             if(testResults[i][k] < 1){
-                failedTests[k]++;
+                failedTests[k] = failedTests[k] + 1;
             }
         }
     }
@@ -236,4 +236,5 @@ void printTestResults(int** testResults, int numTests, int numRuns, int verbose)
 
         printf("TEST FAILED\n");
     }
+    free(failedTests);
 }
