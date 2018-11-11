@@ -71,13 +71,13 @@ int main(){
         for (i = 0; i < numPlayers; i++){
             initG.deckCount[i] = 0;
             for (j = 0; j < 10; j++){
-                initG.deck[i][j] = randInt(estate, province); //1 = estate, 3 = province
+                initG.deck[i][j] = randInt(estate, treasure_map); //1 = estate, 3 = province
                 initG.deckCount[i]++;
             }
-            for (j = 10; j < 30; j++){
-                initG.deck[i][j] = randInt(copper, gold);   //4 = copper, 6=gold
-                initG.deckCount[i]++;		
-            }
+            // for (j = 10; j < 30; j++){
+            //     initG.deck[i][j] = randInt(copper, gold);   //4 = copper, 6=gold
+            //     initG.deckCount[i]++;		
+            // }
         }       
         // copy the game state to a test case
         memcpy(&testG, &initG, sizeof(struct gameState));
