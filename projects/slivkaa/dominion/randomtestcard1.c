@@ -92,7 +92,7 @@ int main(){
 
 
 void runSmithyUnitTests(struct gameState* initG, struct gameState* testG, int thisPlayer, int k[10], int* testResults){
-    int actual, expected;
+    int actual, expected, i, j;
     int newCards = 0;
     int discarded = 1;
 
