@@ -41,6 +41,7 @@ int main(){
     srand((time(NULL)));
 
     // ----------- TEST 1: Randomizing number of players  --------------
+    printf("TEST 1: Randomizing number of players\n");
     int numRuns = 10, numTests = 4;
     int** testResults = init2dArray(numRuns, numTests + 1);
     thisPlayer = 0;
@@ -161,20 +162,28 @@ void printTestResults(int** testResults, int numTests, int numRuns){
     //Check if tests are successful
     for(i = 0; i < numRuns; i++){
         if(testResults[i][numTests] == numTests){
-            printf("Run %d PASSED\n", i + 1);
+            printf("Run %d PASSED:", i + 1);
+            for(j = 0; j < numTests; j++){
+                printf("%d",testResults[i][j]);
+            }
+            printf("\n");
             numPasses++;
         }
         else{
-            printf("Run %d FAILED\n", i + 1); 
+            printf("Run %d FAILED:\n", i + 1); 
+            for(j = 0; j < numTests; j++){
+                printf("%d",testResults[i][j]);
+            }
+            printf("\n");
         }
     }
     //Print summary
     printf("Summary of test runs: %d/%d passed\n", numPasses, numRuns);
     if(numPasses = numRuns && numPasses > 0){
-        printf("TEST: PASSED\n", numPasses, numRuns);
+        printf("TEST: PASSED\n");
     }
     else{
-        
-        printf("TEST: FAILED\n", numPasses, numRuns);
+
+        printf("TEST: FAILED\n");
     }
 }
