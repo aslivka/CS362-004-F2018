@@ -1,0 +1,66 @@
+Test file: randomtestcard2.c
+----------------- Testing Card: Village ----------------
+EXPECTED OUTPUT: All random tests should PASS.
+
+TEST 1: Randomizing number of players
+Test summary
+Unit test failures:
+test 1: 0 failures
+test 2: 0 failures
+test 3: 0 failures
+test 4: 0 failures
+Number of passed test runs: 10/10 runs
+TEST SUCCESSFULLY COMPLETED
+
+TEST 2: Randomizing deck piles, max number of cards = 100
+Test summary
+Unit test failures:
+test 1: 0 failures
+test 2: 0 failures
+test 3: 0 failures
+test 4: 0 failures
+Number of passed test runs: 1000/1000 runs
+TEST SUCCESSFULLY COMPLETED
+
+TEST 3: Randomizing hand piles, max num of cards = 10
+Test summary
+Unit test failures:
+test 1: 0 failures
+test 2: 0 failures
+test 3: 0 failures
+test 4: 0 failures
+Number of passed test runs: 1000/1000 runs
+TEST SUCCESSFULLY COMPLETED
+
+TEST 4: Randomizing discard piles, max num of cards = 10
+Test summary
+Unit test failures:
+test 1: 0 failures
+test 2: 0 failures
+test 3: 0 failures
+test 4: 0 failures
+Number of passed test runs: 1000/1000 runs
+TEST SUCCESSFULLY COMPLETED
+
+TEST 5: Randomizing number of initial actions, range 0-100 
+Test summary
+Unit test failures:
+test 1: 0 failures
+test 2: 0 failures
+test 3: 0 failures
+test 4: 0 failures
+Number of passed test runs: 1000/1000 runs
+TEST SUCCESSFULLY COMPLETED
+
+Function 'playVillage'
+Lines executed:100.00% of 5
+No branches
+Calls executed:100.00% of 2
+
+File 'dominion.c'
+Lines executed:28.98% of 566
+Branches executed:27.58% of 417
+Taken at least once:20.62% of 417
+Calls executed:18.09% of 94
+Creating 'dominion.c.gcov'
+
