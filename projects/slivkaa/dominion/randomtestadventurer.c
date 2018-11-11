@@ -128,7 +128,7 @@ int main(){
         //Setting random number of cards in discard pile
          for (i = 0; i < numPlayers; i++){
             initG.discardCount[i] = 0;
-            for (j = 0; j < 5; j++){
+            for (j = 0; j < 10; j++){
                 initG.discard[i][j] = randInt(gold + 1, treasure_map); 
                 initG.discardCount[i]++;
             }
