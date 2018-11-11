@@ -152,7 +152,7 @@ int main(){
     delete2dArray(testResults, numRuns, numTests + 1);
 
     // ---------------------------------------------------------------------
-    printf("TEST 4: Randomizing kingdom cards, max num of cards = 10\n");
+    printf("TEST 5: Randomizing kingdom cards, max num of cards = 10\n");
     numRuns = 100;
     numTests = 6;
     testResults = init2dArray(numRuns, numTests + 1);
