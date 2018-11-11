@@ -222,19 +222,19 @@ void printTestResults(int** testResults, int numTests, int numRuns, int verbose)
         }
     }
     //Print summary
-    printf("---Test summary\n");
-    printf("---Unit test failures: ");
+    printf("Test summary\n");
+    printf("Unit test failures: ");
     for(k = 0; k < numTests; k++){
-        printf("test %d: fails=%d  ", k+1, failedTests[k]);
+        printf("|test %d: %d fails| ", k+1, failedTests[k]);
     }
     printf("\n");
-    printf("---Number of passed test runs: %d/%d runs\n", numPasses, numRuns);
+    printf("Number of passed test runs: %d/%d runs\n", numPasses, numRuns);
     if((numPasses == numRuns) && (numPasses > 0)){
-        printf("TEST SUCCESSFULLY COMPLETED\n");
+        printf("TEST SUCCESSFULLY COMPLETED\n\n");
     }
     else{
 
-        printf("TEST FAILED\n");
+        printf("TEST FAILED\n\n");
     }
     free(failedTests);
 }
