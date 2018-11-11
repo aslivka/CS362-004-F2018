@@ -63,20 +63,21 @@ int main(){
     testResults = init2dArray(numRuns, numTests + 1);
     thisPlayer = 0;
     numPlayers = 2;
-    for(i = 0; i < numRuns; i++)
+    int m;
+    for(m = 0; m < numRuns; m++)
     {
         printf("Init game, i=%d\t", i);
         initializeGame(numPlayers, k, seed, &initG);  
         //Setting random numbers of victory and treasure cards
-        for (m = 0; m < numPlayers; m++){
-            initG.deckCount[m] = 0;
+        for (i = 0; i < numPlayers; i++){
+            initG.deckCount[i] = 0;
             for (j = 0; j < 3; j++){
-                initG.deck[m][j] = randInt(estate, province); //1 = estate, 3 = province
-                initG.deckCount[m]++;
+                initG.deck[i][j] = randInt(estate, province); //1 = estate, 3 = province
+                initG.deckCount[i]++;
             }
             for (j = 3; j < 10; j++){
-                initG.deck[m][j] = randInt(copper, gold);   //4 = copper, 6=gold
-                initG.deckCount[m]++;		
+                initG.deck[i][j] = randInt(copper, gold);   //4 = copper, 6=gold
+                initG.deckCount[i]++;		
             }
         }       
         // copy the game state to a test case
@@ -84,7 +85,7 @@ int main(){
         // //Playing card
         choice3 = thisPlayer;
         cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
-        doAdventurerUnitTests(&initG, &testG, thisPlayer, k, testResults[i]);
+        doAdventurerUnitTests(&initG, &testG, thisPlayer, k, testResults[m]);
     }
     printTestResults(testResults, numTests, numRuns, 1);
     delete2dArray(testResults, numRuns, numTests + 1);
