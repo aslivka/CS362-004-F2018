@@ -50,7 +50,7 @@ int main(){
         memcpy(&testG, &initG, sizeof(struct gameState));
         //Playing card
         choice3 = thisPlayer;
-        cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
+        cardEffect(smithy, choice1, choice2, choice3, &testG, handpos, &bonus);
         runSmithyUnitTests(&initG, &testG, thisPlayer, k, testResults[i]);
     }
     printTestResults(testResults, numTests, numRuns, 0);
