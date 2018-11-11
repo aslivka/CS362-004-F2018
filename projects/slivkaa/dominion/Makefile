@@ -40,7 +40,7 @@ runCardTests: randomtestadventurer.c  dominion.o rngs.o testLib.o
 	echo "randomtestadventurer.c :" > randtestresults.out
 	gcc -o randomtestadventurer -g randomtestadventurer.c  dominion.o rngs.o testLib.o $(CFLAGS)
 	./randomtestadventurer >> randtestresults.out
-	gcov -b -f dominion.c | grep "playAdventurer" >> randtestresults.out
+	gcov -b -f dominion.c | grep "playAdventurer" -B 0 -A 5 >> randtestresults.out
 	gcov -b dominion.c >> randtestresults.out
 
 	# echo "randomtestcard1.c:" >> randtestresults.out
