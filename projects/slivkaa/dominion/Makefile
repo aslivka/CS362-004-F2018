@@ -39,8 +39,8 @@ runCardTests: randomtestadventurer.c  dominion.o rngs.o testLib.o
 
 	echo "randomtestadventurer.c :" > randtestresults.out
 	gcc -o randomtestadventurer -g randomtestadventurer.c  dominion.o rngs.o testLib.o $(CFLAGS)
-	./randomtestadventurer >> randtestresults.out
-	gcov -b dominion.c >> randtestresults.out
+	# ./randomtestadventurer >> randtestresults.out
+	# gcov -b dominion.c >> randtestresults.out
 
 	# echo "randomtestcard1.c:" >> randtestresults.out
 	# gcc -o randomtestcard1 -g randomtestcard1.c dominion.o rngs.o testLib.o $(CFLAGS)
