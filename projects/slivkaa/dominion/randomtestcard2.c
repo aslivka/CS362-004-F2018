@@ -144,7 +144,7 @@ int main(){
     delete2dArray(testResults, numRuns, numTests + 1);
 
     // ---------------------------------------------------------------------
-    printf("TEST 5: Randomizing kingdom cards, max num of cards = 10\n");
+    printf("TEST 5: Randomizing number of initial player actions, range 0-100 \n");
     numRuns = 100;
     numTests = 4;
     testResults = init2dArray(numRuns, numTests + 1);
@@ -156,14 +156,11 @@ int main(){
         //Initializing game states
         memset(&initG, 0, sizeof(struct gameState));
         memset(&testG, 0, sizeof(struct gameState));
-        //Assigning random kingdom cards to k array
-        for(i = 0; i < 10; i++){
-            do{
-                card = randInt(adventurer, sea_hag);  
-            }while( isDupCard(k, 10, card) == 1);
-            k[i] = card;
-        }    
         initializeGame(numPlayers, k, seed, &initG);  
+        
+        //Assigning random number of actions to player
+        initG.numActions = randInt(0, 100);
+
         // copy the game state to a test case
         memcpy(&testG, &initG, sizeof(struct gameState));
         // //Playing card
@@ -189,7 +186,7 @@ int isDupCard(int* inArray, int size, int card){
 
 void runVillageUnitTests(struct gameState* initG, struct gameState* testG, int thisPlayer, int k[10], int* testResults){
     int actual[3], expected[3];
-    
+
     expected[0] = initG->deckCount[thisPlayer] - 1;
     actual[0] = testG->deckCount[thisPlayer];
     if( (expected[0] == actual[0])  ){ 
