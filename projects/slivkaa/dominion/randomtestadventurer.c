@@ -70,14 +70,10 @@ int main(){
         //Setting random numbers of victory and treasure cards
         for (i = 0; i < numPlayers; i++){
             initG.deckCount[i] = 0;
-            for (j = 0; j < 10; j++){
+            for (j = 0; j < 100; j++){
                 initG.deck[i][j] = randInt(estate, treasure_map); //1 = estate, 3 = province
                 initG.deckCount[i]++;
             }
-            // for (j = 10; j < 30; j++){
-            //     initG.deck[i][j] = randInt(copper, gold);   //4 = copper, 6=gold
-            //     initG.deckCount[i]++;		
-            // }
         }       
         // copy the game state to a test case
         memcpy(&testG, &initG, sizeof(struct gameState));
@@ -103,7 +99,7 @@ int main(){
         initializeGame(numPlayers, k, seed, &initG);  
          for (i = 0; i < numPlayers; i++){
             initG.handCount[i] = 0;
-            for (j = 0; j < 5; j++){
+            for (j = 0; j < 10; j++){
                 initG.hand[i][j] = randInt(estate, treasure_map); //1 = estate, 3 = province
                 initG.handCount[i]++;
             }
