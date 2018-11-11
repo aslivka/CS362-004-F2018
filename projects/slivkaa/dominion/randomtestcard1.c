@@ -8,7 +8,7 @@
 #include "testLib.h"
 #define TESTCARD "Smithy"
 void runSmithyUnitTests(struct gameState* initG, struct gameState* testG, int thisPlayer, int k[10], int* testResults);
-void isDupCard(int* inArray, int size, int card);
+int isDupCard(int* inArray, int size, int card);
 
 int main(){
 
@@ -185,7 +185,7 @@ int main(){
      return 0;
 }
 
-void isDupCard(int* inArray, int size, int card){
+int isDupCard(int* inArray, int size, int card){
     int j;
     for(j = 0; j < size; i++){
         if(inArray[j] == card){
