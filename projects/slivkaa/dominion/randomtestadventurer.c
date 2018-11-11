@@ -9,7 +9,7 @@
 #include "testLib.h"
 #define TESTCARD "Adventurer"
 void doAdventurerUnitTests(struct gameState* initG, struct gameState* testG, int thisPlayer, int k[10], int* testResults);
-void printTestResults(int** testResults, int numTests, int numRuns);
+void printTestResults(int** testResults, int numTests, int numRuns, int verbose);
 
 int main(){
 
@@ -56,7 +56,7 @@ int main(){
         cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
         doAdventurerUnitTests(&initG, &testG, thisPlayer, k, testResults[i]);
     }
-    printTestResults(testResults, numTests, numRuns);
+    printTestResults(testResults, numTests, numRuns, 1);
     delete2dArray(testResults, numRuns, numTests + 1);
 
    return 0;
@@ -152,38 +152,47 @@ void doAdventurerUnitTests(struct gameState* initG, struct gameState* testG, int
     }
     else{
         // printf("TEST 4: FAIL State change occured to player 2's hand and deck piles\n");
-
     }
 }
 
-void printTestResults(int** testResults, int numTests, int numRuns){
+void printTestResults(int** testResults, int numTests, int numRuns, int verbose){
     int i, j, numPasses = 0;
     
     //Check if tests are successful
     for(i = 0; i < numRuns; i++){
         if(testResults[i][numTests] == numTests){
-            printf("Run %d PASSED:", i + 1);
-            for(j = 0; j < numTests; j++){
-                printf("%d",testResults[i][j]);
+            if(verbose == 1){
+                printf("Run %d PASSED", i + 1);
+                if(verbose == 2){
+                    printf(":")
+                    for(j = 0; j < numTests; j++){
+                        printf("%d\t",testResults[i][j]);
+                    }
+                }
+                printf("\n");
             }
-            printf("\n");
             numPasses++;
         }
         else{
-            printf("Run %d FAILED:\n", i + 1); 
-            for(j = 0; j < numTests; j++){
-                printf("%d",testResults[i][j]);
+            if(verbose == 1){
+                 printf("Run %d FAILED\n", i + 1);
+                if(verbose == 2){
+                    for(j = 0; j < numTests; j++){
+                        printf("%d\t",testResults[i][j]);
+                    }
+                } 
+                printf("\n");
             }
-            printf("\n");
         }
     }
     //Print summary
-    printf("Summary of test runs: %d/%d passed\n", numPasses, numRuns);
+    printf("Test summary\n");
+    printf("Number of passed tests: %d/%d passed\n", numPasses, numRuns);
     if(numPasses = numRuns && numPasses > 0){
-        printf("TEST: PASSED\n");
+        printf("2. TEST SUCCESSFULLY COMPLETED\n");
     }
     else{
 
-        printf("TEST: FAILED\n");
+        printf("TEST FAILED\n");
     }
 }
