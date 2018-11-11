@@ -154,7 +154,7 @@ int main(){
         //Setting random number of cards in hand
          for (i = 0; i < numPlayers; i++){
             initG->discardCount[i] = 0;
-            for (j = 0; j < 10; j++){
+            for (j = 0; j < 5; j++){
                 initG->discard[i][j] = randInt(estate, treasure_map); //1 = estate, 3 = province
                 initG->discardCount[i]++;
             }
