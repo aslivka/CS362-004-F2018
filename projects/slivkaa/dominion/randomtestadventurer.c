@@ -25,7 +25,7 @@ int main(){
     int handpos = 0, choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0;
     int seed = 1000;
     int numPlayers = 2, thisPlayer = 0;
-	struct gameState *initG, *testG;
+	struct gameState initG, testG;
     int k[10] = {adventurer, embargo, village, minion, mine, cutpurse,
 			sea_hag, tribute, smithy, council_room};
 
@@ -139,8 +139,6 @@ int main(){
     printf("TEST 4: Randomizing discard piles, max num of cards = 10\n");
     numRuns = 100;
     numTests = 4;
-    testG = calloc(1, sizeof(struct gameState));
-    initG = calloc(1, sizeof(struct gameState));
     testResults = init2dArray(numRuns, numTests + 1);
     thisPlayer = 0;
     numPlayers = 2;
@@ -148,23 +146,23 @@ int main(){
     for(m = 0; m < numRuns; m++)
     {
         //Initializing test structs
-        memset(initG, 0, sizeof(struct gameState));
-        memset(testG, 0, sizeof(struct gameState));
-        initializeGame(numPlayers, k, seed, initG);
+        memset(&initG, 0, sizeof(struct gameState));
+        memset(&testG, 0, sizeof(struct gameState));
+        initializeGame(numPlayers, k, seed, &initG);
         //Setting random number of cards in hand
          for (i = 0; i < numPlayers; i++){
-            initG->discardCount[i] = 0;
+            initG.discardCount[i] = 0;
             for (j = 0; j < 5; j++){
-                initG->discard[i][j] = randInt(estate, treasure_map); //1 = estate, 3 = province
-                initG->discardCount[i]++;
+                initG.discard[i][j] = randInt(estate, treasure_map); //1 = estate, 3 = province
+                initG.discardCount[i]++;
             }
         }             
         // copy the game state to a test case
         memcpy(testG, initG, sizeof(struct gameState));
         // //Playing card
         choice3 = thisPlayer;
-        cardEffect(adventurer, choice1, choice2, choice3, testG, handpos, &bonus);
-        doAdventurerUnitTests(initG, testG, thisPlayer, k, testResults[m]);
+        cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
+        doAdventurerUnitTests(&initG, &testG, thisPlayer, k, testResults[m]);
     }
     printTestResults(testResults, numTests, numRuns, 0);
     delete2dArray(testResults, numRuns, numTests + 1);
@@ -198,7 +196,6 @@ void doAdventurerUnitTests(struct gameState* initG, struct gameState* testG, int
     }
     else{
         // printf("TEST 1: FAIL player 1 doesn't have +2 treasure cards in his hand\n");
- 
     }
 
     // ----------- TEST 2: All drawn cards (except 2 treasure cards) should be moved to discard pile --------------
@@ -236,7 +233,6 @@ void doAdventurerUnitTests(struct gameState* initG, struct gameState* testG, int
     }
     else{
         // printf("TEST 3: FAIL State change occured to kingdom card piles\n");
-
     }
 
     // ----------- TEST 4: No state change should occur to other's players hand and deck piles. --------------   
