@@ -205,12 +205,14 @@ void doAdventurerUnitTests(struct gameState* initG, struct gameState* testG, int
     expected[0] = 0;
     actual[0] = testG->discardCount[thisPlayer] - initG->discardCount[thisPlayer];
     if(expected[0] <= actual[0]){
-        // printf("TEST 2: PASS all non-treasure cards drawn were moved to discard pile\n");
+        printf("TEST 2: PASS all non-treasure cards drawn were moved to discard pile\n");
+        printf("\tdiscarded count = %d, expected >= %d\n", actual[0], expected[0]);
         testResults[1] = 1;
         testResults[4]++;
     }
     else{
-        // printf("TEST 2: FAIL all non-treasure cards drawn were not moved to discard pile\n");
+        printf("TEST 2: FAIL all non-treasure cards drawn were not moved to discard pile\n");
+        printf("\tdiscarded count = %d, expected >= %d\n", actual[0], expected[0]);
     }
 
     // ----------- TEST 3: No state change should occur to kingdom card piles. --------------
@@ -258,20 +260,12 @@ void doAdventurerUnitTests(struct gameState* initG, struct gameState* testG, int
         }
     }
     if( (actual[2] == 0) && (actual[3] == 0) && (expected[0] == actual[0]) && (expected[1] == actual[1]) ){ 
-        printf("TEST 4: PASS No state change occured to player 2's hand and deck piles\n");
-        printf("\thand card count = %d, expected = %d\n", actual[0], expected[0]);
-        printf("\tdeck card count = %d, expected = %d\n", actual[1], expected[1]);
-        printf("\tnum of different hand cards = %d, expected = %d\n", actual[2], 0);
-        printf("\tnum of different deck cards = %d, expected = %d\n", actual[3], 0);
+        // printf("TEST 4: PASS No state change occured to player 2's hand and deck piles\n");
         testResults[3] = 1;
         testResults[4]++;
     }
     else{
-        printf("TEST 4: FAIL State change occured to player 2's hand and deck piles\n");
-        printf("\thand card count = %d, expected = %d\n", actual[0], expected[0]);
-        printf("\tdeck card count = %d, expected = %d\n", actual[1], expected[1]);
-        printf("\tnum of different hand cards = %d, expected = %d\n", actual[2], 0);
-        printf("\tnum of different deck cards = %d, expected = %d\n", actual[3], 0);
+        // printf("TEST 4: FAIL State change occured to player 2's hand and deck piles\n");
     }
 }
 
