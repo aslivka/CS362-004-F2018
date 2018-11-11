@@ -40,35 +40,29 @@ int main(){
     // printf("TEST 1: Randomizing number of players\n");
     // numRuns = 10;
     // numTests = 4;
-    // testG = calloc(1, sizeof(struct gameState));
-    // initG = calloc(1, sizeof(struct gameState));
     // testResults = init2dArray(numRuns, numTests + 1);
     // thisPlayer = 0;
     // for(i = 0; i < numRuns; i++)
     // {
     //     numPlayers = randInt(2, 4);
     //     //Initializing test structs
-    //     memset(initG, 0, sizeof(struct gameState));
-    //     memset(testG, 0, sizeof(struct gameState));
-    //     initializeGame(numPlayers, k, seed, initG);  
+    //     memset(&initG, 0, sizeof(struct gameState));
+    //     memset(&testG, 0, sizeof(struct gameState));
+    //     initializeGame(numPlayers, k, seed, &initG);  
     //     // copy the game state to a test case
-    //     memcpy(testG, initG, sizeof(struct gameState));
+    //     memcpy(&testG, &initG, sizeof(struct gameState));
     //     //Playing card
     //     choice3 = thisPlayer;
-    //     cardEffect(adventurer, choice1, choice2, choice3, testG, handpos, &bonus);
-    //     doAdventurerUnitTests(initG, testG, thisPlayer, k, testResults[i]);
+    //     cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
+    //     doAdventurerUnitTests(&initG, &testG, thisPlayer, k, testResults[i]);
     // }
     // printTestResults(testResults, numTests, numRuns, 0);
     // delete2dArray(testResults, numRuns, numTests + 1);
-    // free(testG);
-    // free(initG);
 
     // // ----------- TEST 2: Randomizing player's decks --------------
     // printf("TEST 2: Randomizing decks for all players, max number of cards = 100\n");
     // numRuns = 100;
     // numTests = 4;
-    // testG = calloc(1, sizeof(struct gameState));
-    // initG = calloc(1, sizeof(struct gameState));
     // testResults = init2dArray(numRuns, numTests + 1);
     // thisPlayer = 0;
     // numPlayers = 2;
@@ -76,35 +70,31 @@ int main(){
     // for(m = 0; m < numRuns; m++)
     // {
     //     //Initializing test structs
-    //     memset(initG, 0, sizeof(struct gameState));
-    //     memset(testG, 0, sizeof(struct gameState));
-    //     initializeGame(numPlayers, k, seed, initG);  
+    //     memset(&initG, 0, sizeof(struct gameState));
+    //     memset(&testG, 0, sizeof(struct gameState));
+    //     initializeGame(numPlayers, k, seed, &initG);  
     //     //Setting random numbers of victory and treasure cards
     //     for (i = 0; i < numPlayers; i++){
-    //         initG->deckCount[i] = 0;
+    //         initG.deckCount[i] = 0;
     //         for (j = 0; j < 100; j++){
-    //             initG->deck[i][j] = randInt(estate, treasure_map); //1 = estate, 3 = province
-    //             initG->deckCount[i]++;
+    //             initG.deck[i][j] = randInt(estate, treasure_map); //1 = estate, 3 = province
+    //             initG.deckCount[i]++;
     //         }
     //     }       
     //     // copy the game state to a test case
-    //     memcpy(testG, initG, sizeof(struct gameState));
+    //     memcpy(&testG, &initG, sizeof(struct gameState));
     //     // //Playing card
     //     choice3 = thisPlayer;
-    //     cardEffect(adventurer, choice1, choice2, choice3, testG, handpos, &bonus);
-    //     doAdventurerUnitTests(initG, testG, thisPlayer, k, testResults[m]);
+    //     cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
+    //     doAdventurerUnitTests(&initG, &testG, thisPlayer, k, testResults[m]);
     // }
     // printTestResults(testResults, numTests, numRuns, 0);
     // delete2dArray(testResults, numRuns, numTests + 1);
-    // free(testG);
-    // free(initG);
 
     // // ----------- TEST 3: Randomizing player's hand piles --------------
     // printf("TEST 3: Randomizing hands for all players, max num of cards = 10\n");
     // numRuns = 100;
     // numTests = 4;
-    // testG = calloc(1, sizeof(struct gameState));
-    // initG = calloc(1, sizeof(struct gameState));
     // testResults = init2dArray(numRuns, numTests + 1);
     // thisPlayer = 0;
     // numPlayers = 2;
@@ -112,31 +102,29 @@ int main(){
     // for(m = 0; m < numRuns; m++)
     // {
     //     //Initializing test structs
-    //     memset(initG, 0, sizeof(struct gameState));
-    //     memset(testG, 0, sizeof(struct gameState));
-    //     initializeGame(numPlayers, k, seed, initG);
+    //     memset(&initG, 0, sizeof(struct gameState));
+    //     memset(&testG, 0, sizeof(struct gameState));
+    //     initializeGame(numPlayers, k, seed, &initG);
     //     //Setting random number of cards in hand
     //      for (i = 0; i < numPlayers; i++){
-    //         initG->handCount[i] = 0;
+    //         initG.handCount[i] = 0;
     //         for (j = 0; j < 10; j++){
-    //             initG->hand[i][j] = randInt(estate, treasure_map); //1 = estate, 3 = province
-    //             initG->handCount[i]++;
+    //             initG.hand[i][j] = randInt(estate, treasure_map); //1 = estate, 3 = province
+    //             initG.handCount[i]++;
     //         }
     //     }             
     //     // copy the game state to a test case
-    //     memcpy(testG, initG, sizeof(struct gameState));
+    //     memcpy(&testG, &initG, sizeof(struct gameState));
     //     // //Playing card
     //     choice3 = thisPlayer;
-    //     cardEffect(adventurer, choice1, choice2, choice3, testG, handpos, &bonus);
-    //     doAdventurerUnitTests(initG, testG, thisPlayer, k, testResults[m]);
+    //     cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
+    //     doAdventurerUnitTests(&initG, &testG, thisPlayer, k, testResults[m]);
     // }
     // printTestResults(testResults, numTests, numRuns, 0);
     // delete2dArray(testResults, numRuns, numTests + 1);
-    // free(testG);
-    // free(initG);
 
     // ----------- TEST 3: Randomizing player's discard piles --------------
-    printf("TEST 4: Randomizing discard piles, max num of cards = 10\n");
+    printf("TEST 4: Randomizing discard piles, max num of cards = 5\n");
     numRuns = 100;
     numTests = 4;
     testResults = init2dArray(numRuns, numTests + 1);
@@ -153,7 +141,7 @@ int main(){
          for (i = 0; i < numPlayers; i++){
             initG.discardCount[i] = 0;
             for (j = 0; j < 5; j++){
-                initG.discard[i][j] = randInt(estate, treasure_map); //1 = estate, 3 = province
+                initG.discard[i][j] = randInt(estate, gold); //1 = estate, 3 = province
                 initG.discardCount[i]++;
             }
         }             
