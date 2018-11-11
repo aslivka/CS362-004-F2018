@@ -99,7 +99,7 @@ int main(){
     free(testG);
     free(initG);
 
-    // ----------- TEST 3: Randomizing player's hands --------------
+    // ----------- TEST 3: Randomizing player's hand piles --------------
     printf("TEST 3: Randomizing hands for all players, max num of cards = 10\n");
     numRuns = 100;
     numTests = 4;
@@ -135,7 +135,7 @@ int main(){
     free(testG);
     free(initG);
 
-    // ----------- TEST 3: Randomizing player's hands --------------
+    // ----------- TEST 3: Randomizing player's discard piles --------------
     printf("TEST 4: Randomizing discard piles, max num of cards = 10\n");
     numRuns = 100;
     numTests = 4;
@@ -153,10 +153,10 @@ int main(){
         initializeGame(numPlayers, k, seed, initG);
         //Setting random number of cards in hand
          for (i = 0; i < numPlayers; i++){
-            initG->handCount[i] = 0;
+            initG->discardCount[i] = 0;
             for (j = 0; j < 10; j++){
-                initG->hand[i][j] = randInt(estate, treasure_map); //1 = estate, 3 = province
-                initG->handCount[i]++;
+                initG->discard[i][j] = randInt(estate, treasure_map); //1 = estate, 3 = province
+                initG->discardCount[i]++;
             }
         }             
         // copy the game state to a test case
@@ -170,8 +170,6 @@ int main(){
     delete2dArray(testResults, numRuns, numTests + 1);
     free(testG);
     free(initG);
-
-
 
     return 0;
 }
