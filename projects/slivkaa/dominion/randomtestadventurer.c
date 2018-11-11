@@ -187,7 +187,7 @@ void doAdventurerUnitTests(struct gameState* initG, struct gameState* testG, int
 
 void printTestResults(int** testResults, int numTests, int numRuns, int verbose){
     int i, j, k, numPasses = 0;
-    int failedTests = calloc(numTests, sizeof(int));
+    int* failedTests = calloc(numTests, sizeof(int));
     //Check if tests are successful
     for(i = 0; i < numRuns; i++){
         if(testResults[i][numTests] == numTests){
