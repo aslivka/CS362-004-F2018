@@ -1,15 +1,13 @@
 /* -----------------------------------------------------------------------
  * To compile this file include the following lines in your makefile:
  *
- * testUpdateCoins: cardtest2.c dominion.o rngs.o testLib.o
- *      	gcc -o cardtest2 -g cardtest2.c dominion.o rngs.o testLib.o $(CFLAGS)
+ * gcc -o randomtestadventurer -g randomtestadventurer.c  dominion.o rngs.o testLib.o $(CFLAGS)
  * -----------------------------------------------------------------------
  */
 
 #include "testLib.h"
 #define TESTCARD "Adventurer"
 void doAdventurerUnitTests(struct gameState* initG, struct gameState* testG, int thisPlayer, int k[10], int* testResults);
-void printTestResults(int** testResults, int numTests, int numRuns, int verbose);
 
 int main(){
 
@@ -247,55 +245,3 @@ void doAdventurerUnitTests(struct gameState* initG, struct gameState* testG, int
     }
 }
 
-void printTestResults(int** testResults, int numTests, int numRuns, int verbose){
-    int i, j, k, numPasses = 0;
-    int* failedTests = calloc(numTests, sizeof(int));
-    //Check if tests are successful
-    for(i = 0; i < numRuns; i++){
-        if(testResults[i][numTests] == numTests){
-            if(verbose == 1){
-                printf("Run %d PASSED", i + 1);
-                if(verbose == 2){
-                    printf(", unit test results:");
-                    for(j = 0; j < numTests; j++){
-                        printf("%d\t",testResults[i][j]);
-                    }
-                }
-                printf("\n");
-            }
-            numPasses++;
-        }
-        else{
-            if(verbose == 1){
-                printf("Run %d FAILED", i + 1);
-                if(verbose == 2){
-                    printf(", unit test results:");
-                    for(j = 0; j < numTests; j++){
-                        printf("%d\t",testResults[i][j]);
-                    }
-                } 
-                printf("\n");
-            }
-        }
-        for(k = 0; k < numTests; k++){
-            if(testResults[i][k] < 1){
-                failedTests[k] = failedTests[k] + 1;
-            }
-        }
-    }
-    //Print summary
-    printf("Test summary\n");
-    printf("Unit test failures:\n");
-    for(k = 0; k < numTests; k++){
-        printf("test %d: %d failures\n", k+1, failedTests[k]);
-    }
-    printf("Number of passed test runs: %d/%d runs\n", numPasses, numRuns);
-    if((numPasses == numRuns) && (numPasses > 0)){
-        printf("TEST SUCCESSFULLY COMPLETED\n\n");
-    }
-    else{
-
-        printf("TEST FAILED\n\n");
-    }
-    free(failedTests);
-}

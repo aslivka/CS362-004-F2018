@@ -20,6 +20,7 @@ int randInt(int min, int max);
 int** init2dArray(int rows, int cols);
 void delete2dArray(int** array, int rows, int cols);
 void clear2dArray(int** array, int rows, int cols);
+void printTestResults(int** testResults, int numTests, int numRuns, int verbose);
 
 /*
 struct gameState {
