@@ -218,7 +218,7 @@ void printTestResults(int** testResults, int numTests, int numRuns, int verbose)
     //Print summary
     printf("---Test summary\n");
     printf("---Number of passed test runs: %d/%d runs\n", numPasses, numRuns);
-    if(numPasses = numRuns && numPasses > 0){
+    if((numPasses == numRuns) && (numPasses > 0)){
         printf("TEST SUCCESSFULLY COMPLETED\n");
     }
     else{
