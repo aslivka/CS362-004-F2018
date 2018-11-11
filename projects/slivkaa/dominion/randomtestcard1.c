@@ -36,7 +36,7 @@ int main(){
     // ----------- TEST 1: Randomizing number of players  --------------
     printf("TEST 1: Randomizing number of players\n");
     numRuns = 10;
-    numTests = 4;
+    numTests = 6;
     testResults = init2dArray(numRuns, numTests + 1);
     thisPlayer = 0;
     for(i = 0; i < numRuns; i++)
