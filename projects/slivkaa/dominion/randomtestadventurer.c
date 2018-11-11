@@ -66,7 +66,6 @@ int main(){
     // int m;
     for(m = 0; m < numRuns; m++)
     {
-        printf("Init game, i=%d\t", i);
         initializeGame(numPlayers, k, seed, &initG);  
         //Setting random numbers of victory and treasure cards
         for (i = 0; i < numPlayers; i++){
@@ -187,8 +186,8 @@ void doAdventurerUnitTests(struct gameState* initG, struct gameState* testG, int
 }
 
 void printTestResults(int** testResults, int numTests, int numRuns, int verbose){
-    int i, j, numPasses = 0;
-    
+    int i, j, k, numPasses = 0;
+    int failedTests = calloc(numTests, sizeof(int));
     //Check if tests are successful
     for(i = 0; i < numRuns; i++){
         if(testResults[i][numTests] == numTests){
@@ -216,9 +215,18 @@ void printTestResults(int** testResults, int numTests, int numRuns, int verbose)
                 printf("\n");
             }
         }
+        for(k = 0; k < numTests; i++){
+            if(testResults[i][k] < 1){
+                failedTests[k]++;
+            }
+        }
     }
     //Print summary
     printf("---Test summary\n");
+    printf("---Unit test failures: ");
+    for(k = 0; k < numTests; k++){
+        printf("test %d, fails", k, failedTests[k]);
+    }
     printf("---Number of passed test runs: %d/%d runs\n", numPasses, numRuns);
     if((numPasses == numRuns) && (numPasses > 0)){
         printf("TEST SUCCESSFULLY COMPLETED\n");
