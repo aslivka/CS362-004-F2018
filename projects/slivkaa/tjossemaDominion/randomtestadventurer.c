@@ -24,10 +24,10 @@ int main(){
 
     char** unitTestDesc = calloc(10, sizeof(char*));
     //Saving unit test descriptions:
-    unitTestDesc[0] = "TEST 1: player should have +2 treasure cards in his hand";
-    unitTestDesc[1] = "TEST 2: All drawn cards (except 2 treasure cards) should be moved to discard pile";
-    unitTestDesc[2] = "TEST 3: No state change should occur to kingdom card piles.";
-    unitTestDesc[3] = "TEST 4: No state change should occur to other's players hand and deck piles.";
+    unitTestDesc[0] = "UTEST 1: player should have +2 treasure cards in his hand";
+    unitTestDesc[1] = "UTEST 2: All drawn cards (except 2 treasure cards) should be moved to discard pile";
+    unitTestDesc[2] = "UTEST 3: No state change should occur to kingdom card piles.";
+    unitTestDesc[3] = "UTEST 4: No state change should occur to other's players hand and deck piles.";
 
     srand((time(NULL)));
 	printf("----------------- Testing Card: %s ----------------\n", TESTCARD);
