@@ -141,7 +141,7 @@ void clear2dArray(int** array, int rows, int cols){
     }
 }
 
-void printTestResults(int** testResults, int numTests, int numRuns, int verbose){
+void printTestResults(int** testResults, int numTests, int numRuns, int verbose, char** unitTestDesc){
     int i, j, k, numPasses = 0, numFailures = 0;
     int* failedTests = calloc(numTests, sizeof(int));
     //Check if tests are successful
@@ -182,7 +182,9 @@ void printTestResults(int** testResults, int numTests, int numRuns, int verbose)
     printf("Unit test failures:\n");
 
     for(k = 0; k < numTests; k++){
-        printf("test %d: %d failures / %d runs\n", k+1, failedTests[k], numRuns);
+        // printf("test %d: %d failures / %d runs\n", k+1, failedTests[k], numRuns);
+        printf("%s:\n\t %d failures / %d runs\n", unitTestDesc[k], failedTests[k], numRuns);
+
         if(failedTests[k] > 0){
             numFailures = numFailures + failedTests[k];
         }

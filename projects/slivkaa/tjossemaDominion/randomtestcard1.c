@@ -27,6 +27,15 @@ int main(){
     printf("EXPECTED OUTPUT: All random tests should fail due to introduced bugs in Asst 2.\n");
     printf("From Assignment 3, unit test 4 should fail\n\n");
 
+    char** unitTestDesc = calloc(10, sizeof(char*));
+    //Saving unit test descriptions:
+    unitTestDesc[0] = "TEST 1: player should receive exactly 3 cards";
+    unitTestDesc[1] = "TEST 2: player 1's card should come from his own deck";
+    unitTestDesc[2] = "TEST 3: player 2's deck/hand shouldn't change";
+    unitTestDesc[3] = "TEST 4: played smithy card was discarded";
+    unitTestDesc[4] = "TEST 5: No state change should occur to the victory card piles";
+    unitTestDesc[5] = "TEST 6: No state change should occur to the kingdom card piles";
+
     // ---------------------------------------------------------------------
     printf("TEST 1: Randomizing number of players\n");
     numRuns = 10;
@@ -47,7 +56,7 @@ int main(){
         cardEffect(smithy, choice1, choice2, choice3, &testG, handpos, &bonus);
         runSmithyUnitTests(&initG, &testG, thisPlayer, k, testResults[i]);
     }
-    printTestResults(testResults, numTests, numRuns, 0);
+    printTestResults(testResults, numTests, numRuns, 0, unitTestDesc);
     delete2dArray(testResults, numRuns, numTests + 1);
 
     // ---------------------------------------------------------------------
@@ -78,7 +87,7 @@ int main(){
         cardEffect(smithy, choice1, choice2, choice3, &testG, handpos, &bonus);
         runSmithyUnitTests(&initG, &testG, thisPlayer, k, testResults[m]);
     }
-    printTestResults(testResults, numTests, numRuns, 0);
+    printTestResults(testResults, numTests, numRuns, 0, unitTestDesc);
     delete2dArray(testResults, numRuns, numTests + 1);
 
     // ---------------------------------------------------------------------
@@ -109,7 +118,7 @@ int main(){
         cardEffect(smithy, choice1, choice2, choice3, &testG, handpos, &bonus);
         runSmithyUnitTests(&initG, &testG, thisPlayer, k, testResults[m]);
     }
-    printTestResults(testResults, numTests, numRuns, 0);
+    printTestResults(testResults, numTests, numRuns, 0, unitTestDesc);
     delete2dArray(testResults, numRuns, numTests + 1);
 
     // ---------------------------------------------------------------------
@@ -141,7 +150,7 @@ int main(){
         cardEffect(smithy, choice1, choice2, choice3, &testG, handpos, &bonus);
         runSmithyUnitTests(&initG, &testG, thisPlayer, k, testResults[m]);
     }
-    printTestResults(testResults, numTests, numRuns, 0);
+    printTestResults(testResults, numTests, numRuns, 0, unitTestDesc);
     delete2dArray(testResults, numRuns, numTests + 1);
 
     // ---------------------------------------------------------------------
@@ -172,7 +181,7 @@ int main(){
         cardEffect(smithy, choice1, choice2, choice3, &testG, handpos, &bonus);
         runSmithyUnitTests(&initG, &testG, thisPlayer, k, testResults[m]);
     }
-    printTestResults(testResults, numTests, numRuns, 0);
+    printTestResults(testResults, numTests, numRuns, 0, unitTestDesc);
     delete2dArray(testResults, numRuns, numTests + 1);
 
      return 0;
