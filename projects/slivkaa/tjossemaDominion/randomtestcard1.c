@@ -207,7 +207,7 @@ void runSmithyUnitTests(struct gameState* initG, struct gameState* testG, int th
     expected = initG->handCount[thisPlayer] + newCards;
     if(actual == expected){
         // printf("TEST 1: PASS player 1 received exactly 3 cards\n");
-        printf("\thand count = %d, expected = %d\n", actual, expected);
+        // printf("\thand count = %d, expected = %d\n", actual, expected);
         testResults[0] = 1;
         testResults[6]++;
     }
