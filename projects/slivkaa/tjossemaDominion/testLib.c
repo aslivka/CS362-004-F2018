@@ -190,7 +190,7 @@ void printTestResults(int** testResults, int numTests, int numRuns, int verbose)
 
     numPasses = numRuns * numTests - numFailures;
     printf("Number of passed test runs: %d / %d runs\n", numPasses, numRuns * numTests);
-    if(numFailures > 0){
+    if(numFailures = 0){
         printf("TEST SUCCESSFULLY COMPLETED\n\n");
     }
     else{
