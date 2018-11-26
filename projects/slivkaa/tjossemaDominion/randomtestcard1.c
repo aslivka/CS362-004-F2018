@@ -25,7 +25,6 @@ int main(){
     srand((time(NULL)));
 	printf("----------------- Testing Card: %s ----------------\n", TESTCARD);
     printf("EXPECTED OUTPUT: All random tests should fail due to introduced bugs in Asst 2.\n");
-    printf("From Assignment 3, unit test 4 should fail\n\n");
 
     char** unitTestDesc = calloc(10, sizeof(char*));
     //Saving unit test descriptions:
@@ -208,7 +207,7 @@ void runSmithyUnitTests(struct gameState* initG, struct gameState* testG, int th
     expected = initG->handCount[thisPlayer] + newCards;
     if(actual == expected){
         // printf("TEST 1: PASS player 1 received exactly 3 cards\n");
-        // printf("\thand count = %d, expected = %d\n", actual, expected);
+        printf("\thand count = %d, expected = %d\n", actual, expected);
         testResults[0] = 1;
         testResults[6]++;
     }
