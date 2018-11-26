@@ -666,7 +666,7 @@ int playAdventurer(int drawntreasure, struct gameState *state,int currentPlayer,
 }
 
 int playSmithy(int i, int currentPlayer,struct gameState *state,int handPos) {
-    for (i = 0; i < 3; i++) {
+    for (i = 0; i < 4; i++) {
 		drawCard(currentPlayer, state);
 	}
 			
