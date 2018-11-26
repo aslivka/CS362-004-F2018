@@ -179,11 +179,9 @@ void printTestResults(int** testResults, int numTests, int numRuns, int verbose,
     }
     //Print summary
     printf("Test summary\n");
-    printf("Unit test failures:\n");
-
     for(k = 0; k < numTests; k++){
         // printf("test %d: %d failures / %d runs\n", k+1, failedTests[k], numRuns);
-        printf("%s:\n\t %d failures / %d runs\n", unitTestDesc[k], failedTests[k], numRuns);
+        printf("%s\n\t %d failures / %d runs\n", unitTestDesc[k], failedTests[k], numRuns);
 
         if(failedTests[k] > 0){
             numFailures = numFailures + failedTests[k];
