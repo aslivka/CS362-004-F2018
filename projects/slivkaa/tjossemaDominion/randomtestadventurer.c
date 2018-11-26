@@ -53,7 +53,7 @@ int main(){
         cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
         doAdventurerUnitTests(&initG, &testG, thisPlayer, k, testResults[i]);
     }
-    printTestResults(testResults, numTests, numRuns, 0);
+    printTestResults(testResults, numTests, numRuns, 0, unitTestDesc );
     delete2dArray(testResults, numRuns, numTests + 1);
 
     // ---------------------------------------------------------------------
@@ -84,7 +84,7 @@ int main(){
         cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
         doAdventurerUnitTests(&initG, &testG, thisPlayer, k, testResults[m]);
     }
-    printTestResults(testResults, numTests, numRuns, 0);
+    printTestResults(testResults, numTests, numRuns, 0, unitTestDesc );
     delete2dArray(testResults, numRuns, numTests + 1);
 
     // ---------------------------------------------------------------------
@@ -115,7 +115,7 @@ int main(){
         cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
         doAdventurerUnitTests(&initG, &testG, thisPlayer, k, testResults[m]);
     }
-    printTestResults(testResults, numTests, numRuns, 0);
+    printTestResults(testResults, numTests, numRuns, 0, unitTestDesc);
     delete2dArray(testResults, numRuns, numTests + 1);
 
     // ---------------------------------------------------------------------
@@ -146,7 +146,7 @@ int main(){
         cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
         doAdventurerUnitTests(&initG, &testG, thisPlayer, k, testResults[m]);
     }
-    printTestResults(testResults, numTests, numRuns, 0);
+    printTestResults(testResults, numTests, numRuns, 0, unitTestDesc );
     delete2dArray(testResults, numRuns, numTests + 1);
 
     return 0;
