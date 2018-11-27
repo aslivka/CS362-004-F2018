@@ -1,0 +1,101 @@
+Test file: randomtestcard1.c
+----------------- Testing Card: Smithy ----------------
+EXPECTED OUTPUT: All random tests should fail due to introduced bugs in Asst 2.
+RANDOM TEST 1: Randomizing number of players
+Test summary
+UTEST 1: player should receive exactly 3 cards
+	 0 failures / 10 runs
+UTEST 2: player 1's card should come from his own deck
+	 10 failures / 10 runs
+UTEST 3: player 2's deck/hand shouldn't change
+	 0 failures / 10 runs
+UTEST 4: played smithy card was discarded
+	 10 failures / 10 runs
+UTEST 5: No state change should occur to the victory card piles
+	 0 failures / 10 runs
+UTEST 6: No state change should occur to the kingdom card piles
+	 0 failures / 10 runs
+Number of passed test runs: 40 / 60 runs
+TEST FAILED
+
+RANDOM TEST 2: Randomizing deck piles, max number of cards = 100
+Test summary
+UTEST 1: player should receive exactly 3 cards
+	 0 failures / 1000 runs
+UTEST 2: player 1's card should come from his own deck
+	 1000 failures / 1000 runs
+UTEST 3: player 2's deck/hand shouldn't change
+	 0 failures / 1000 runs
+UTEST 4: played smithy card was discarded
+	 1000 failures / 1000 runs
+UTEST 5: No state change should occur to the victory card piles
+	 0 failures / 1000 runs
+UTEST 6: No state change should occur to the kingdom card piles
+	 0 failures / 1000 runs
+Number of passed test runs: 4000 / 6000 runs
+TEST FAILED
+
+RANDOM TEST 3: Randomizing hand piles, max num of cards = 10
+Test summary
+UTEST 1: player should receive exactly 3 cards
+	 0 failures / 1000 runs
+UTEST 2: player 1's card should come from his own deck
+	 1000 failures / 1000 runs
+UTEST 3: player 2's deck/hand shouldn't change
+	 0 failures / 1000 runs
+UTEST 4: played smithy card was discarded
+	 1000 failures / 1000 runs
+UTEST 5: No state change should occur to the victory card piles
+	 0 failures / 1000 runs
+UTEST 6: No state change should occur to the kingdom card piles
+	 0 failures / 1000 runs
+Number of passed test runs: 4000 / 6000 runs
+TEST FAILED
+
+RANDOM TEST 4: Randomizing discard piles, max num of cards = 10
+Test summary
+UTEST 1: player should receive exactly 3 cards
+	 0 failures / 1000 runs
+UTEST 2: player 1's card should come from his own deck
+	 1000 failures / 1000 runs
+UTEST 3: player 2's deck/hand shouldn't change
+	 0 failures / 1000 runs
+UTEST 4: played smithy card was discarded
+	 1000 failures / 1000 runs
+UTEST 5: No state change should occur to the victory card piles
+	 0 failures / 1000 runs
+UTEST 6: No state change should occur to the kingdom card piles
+	 0 failures / 1000 runs
+Number of passed test runs: 4000 / 6000 runs
+TEST FAILED
+
+RANDOM TEST 5: Randomizing kingdom cards, max num of cards = 10
+Test summary
+UTEST 1: player should receive exactly 3 cards
+	 0 failures / 1000 runs
+UTEST 2: player 1's card should come from his own deck
+	 1000 failures / 1000 runs
+UTEST 3: player 2's deck/hand shouldn't change
+	 0 failures / 1000 runs
+UTEST 4: played smithy card was discarded
+	 1000 failures / 1000 runs
+UTEST 5: No state change should occur to the victory card piles
+	 0 failures / 1000 runs
+UTEST 6: No state change should occur to the kingdom card piles
+	 0 failures / 1000 runs
+Number of passed test runs: 4000 / 6000 runs
+TEST FAILED
+
+Function 'playSmithy'
+Lines executed:100.00% of 5
+Branches executed:100.00% of 2
+Taken at least once:100.00% of 2
+Calls executed:100.00% of 2
+
+File 'dominion.c'
+Lines executed:25.22% of 563
+Branches executed:26.75% of 415
+Taken at least once:18.55% of 415
+Calls executed:13.68% of 95
+Creating 'dominion.c.gcov'
+

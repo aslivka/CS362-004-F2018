@@ -1,0 +1,68 @@
+Test file: randomtestadventurer.c
+----------------- Testing Card: Adventurer ----------------
+EXPECTED: All random tests should fail due to introduced bugs in Asst 2.
+RANDOM TEST 1: Randomizing number of players
+Test summary
+UTEST 1: player should have +2 treasure cards in his hand
+	 10 failures / 10 runs
+UTEST 2: All drawn cards (except 2 treasure cards) should be moved to discard pile
+	 0 failures / 10 runs
+UTEST 3: No state change should occur to kingdom card piles.
+	 0 failures / 10 runs
+UTEST 4: No state change should occur to other's players hand and deck piles.
+	 0 failures / 10 runs
+Number of passed test runs: 30 / 40 runs
+TEST FAILED
+
+RANDOM TEST 2: Randomizing deck piles, max number of cards = 100
+Test summary
+UTEST 1: player should have +2 treasure cards in his hand
+	 1000 failures / 1000 runs
+UTEST 2: All drawn cards (except 2 treasure cards) should be moved to discard pile
+	 0 failures / 1000 runs
+UTEST 3: No state change should occur to kingdom card piles.
+	 0 failures / 1000 runs
+UTEST 4: No state change should occur to other's players hand and deck piles.
+	 0 failures / 1000 runs
+Number of passed test runs: 3000 / 4000 runs
+TEST FAILED
+
+RANDOM TEST 3: Randomizing hand piles, max num of cards = 10
+Test summary
+UTEST 1: player should have +2 treasure cards in his hand
+	 109 failures / 1000 runs
+UTEST 2: All drawn cards (except 2 treasure cards) should be moved to discard pile
+	 0 failures / 1000 runs
+UTEST 3: No state change should occur to kingdom card piles.
+	 0 failures / 1000 runs
+UTEST 4: No state change should occur to other's players hand and deck piles.
+	 0 failures / 1000 runs
+Number of passed test runs: 3891 / 4000 runs
+TEST FAILED
+
+RANDOM TEST 4: Randomizing discard piles, max num of cards = 10
+Test summary
+UTEST 1: player should have +2 treasure cards in his hand
+	 1000 failures / 1000 runs
+UTEST 2: All drawn cards (except 2 treasure cards) should be moved to discard pile
+	 0 failures / 1000 runs
+UTEST 3: No state change should occur to kingdom card piles.
+	 0 failures / 1000 runs
+UTEST 4: No state change should occur to other's players hand and deck piles.
+	 0 failures / 1000 runs
+Number of passed test runs: 3000 / 4000 runs
+TEST FAILED
+
+Function 'playAdventurer'
+Lines executed:93.33% of 15
+Branches executed:100.00% of 12
+Taken at least once:91.67% of 12
+Calls executed:50.00% of 2
+
+File 'dominion.c'
+Lines executed:21.85% of 563
+Branches executed:24.34% of 415
+Taken at least once:16.39% of 415
+Calls executed:10.53% of 95
+Creating 'dominion.c.gcov'
+
