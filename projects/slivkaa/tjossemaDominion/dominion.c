@@ -666,10 +666,14 @@ int playAdventurer(int drawntreasure, struct gameState *state,int currentPlayer,
 }
 
 int playSmithy(int i, int currentPlayer,struct gameState *state,int handPos) {
+    int j = 0;
+    printf("playing smithy,");
     for (i = 0; i < 4; i++) {
 		drawCard(currentPlayer, state);
+    j++;
 	}
-			
+		printf("drew %d cards\n", j);
+
     //discard card from hand
     discardCard(handPos, currentPlayer, state, 0);
     return 0;
