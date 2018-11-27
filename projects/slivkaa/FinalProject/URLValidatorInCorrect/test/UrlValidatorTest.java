@@ -136,12 +136,18 @@ public class UrlValidatorTest extends TestCase {
    
    //You need to create more test cases for your Partitions if you need to 
    public void printTestResults(UrlValidator urlVal, String[] testCases, String title) {
+	   boolean validUrl = true;
 	   System.out.print("\n" + title + "\n");
 	   System.out.print("Valid?\tURL\n");
 	   for(int i = 0; i < testCases.length; i++) {	
-			boolean validUrl = urlVal.isValid(testCases[i]);
-			System.out.print(validUrl + "\t");   
-		    System.out.print(testCases[i] + "\n");	
+		try {
+	           validUrl = urlVal.isValid(testCases[i]);
+		}
+		catch(Exception | Error e) {
+		   System.out.println("FAIL: "+testCases[i]+" caused "+e);
+		}
+		System.out.print(validUrl + "\t");   
+		System.out.print(testCases[i] + "\n");	
 	   }
    }
    
