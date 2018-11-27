@@ -54,8 +54,8 @@ int main(){
         choice3 = thisPlayer;
         printf("before hand count: %d\n", testG.handCount[thisPlayer]);
         cardEffect(smithy, choice1, choice2, choice3, &testG, handpos, &bonus);
-        runSmithyUnitTests(&initG, &testG, thisPlayer, k, testResults[i]);
         printf("after hand count: %d\n", testG.handCount[thisPlayer]);
+        runSmithyUnitTests(&initG, &testG, thisPlayer, k, testResults[i]);
     }
     printTestResults(testResults, numTests, numRuns, 0, unitTestDesc);
     delete2dArray(testResults, numRuns, numTests + 1);
