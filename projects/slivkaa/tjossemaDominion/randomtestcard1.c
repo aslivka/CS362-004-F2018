@@ -52,138 +52,136 @@ int main(){
         memcpy(&testG, &initG, sizeof(struct gameState));
         //Playing card
         choice3 = thisPlayer;
-        printf("before hand count: %d\n", testG.handCount[thisPlayer]);
         cardEffect(smithy, choice1, choice2, choice3, &testG, handpos, &bonus);
-        printf("after hand count: %d\n", testG.handCount[thisPlayer]);
         runSmithyUnitTests(&initG, &testG, thisPlayer, k, testResults[i]);
     }
     printTestResults(testResults, numTests, numRuns, 0, unitTestDesc);
     delete2dArray(testResults, numRuns, numTests + 1);
 
-    // // ---------------------------------------------------------------------
-    // printf("RANDOM TEST 2: Randomizing deck piles, max number of cards = 100\n");
-    // numRuns = 1000;
-    // numTests = 6;
-    // testResults = init2dArray(numRuns, numTests + 1);
-    // thisPlayer = 0;
-    // numPlayers = 2;
-    // for(m = 0; m < numRuns; m++)
-    // {
-    //     //Initializing game states
-    //     memset(&initG, 0, sizeof(struct gameState));
-    //     memset(&testG, 0, sizeof(struct gameState));
-    //     initializeGame(numPlayers, k, seed, &initG);  
-    //     //Setting random numbers of victory and treasure cards
-    //     for (i = 0; i < numPlayers; i++){
-    //         initG.deckCount[i] = 0;
-    //         for (j = 0; j < 100; j++){
-    //             initG.deck[i][j] = randInt(estate, treasure_map); //1 = estate, 3 = province
-    //             initG.deckCount[i]++;
-    //         }
-    //     }       
-    //     // copy the game state to a test case
-    //     memcpy(&testG, &initG, sizeof(struct gameState));
-    //     // //Playing card
-    //     choice3 = thisPlayer;
-    //     cardEffect(smithy, choice1, choice2, choice3, &testG, handpos, &bonus);
-    //     runSmithyUnitTests(&initG, &testG, thisPlayer, k, testResults[m]);
-    // }
-    // printTestResults(testResults, numTests, numRuns, 0, unitTestDesc);
-    // delete2dArray(testResults, numRuns, numTests + 1);
+    // ---------------------------------------------------------------------
+    printf("RANDOM TEST 2: Randomizing deck piles, max number of cards = 100\n");
+    numRuns = 1000;
+    numTests = 6;
+    testResults = init2dArray(numRuns, numTests + 1);
+    thisPlayer = 0;
+    numPlayers = 2;
+    for(m = 0; m < numRuns; m++)
+    {
+        //Initializing game states
+        memset(&initG, 0, sizeof(struct gameState));
+        memset(&testG, 0, sizeof(struct gameState));
+        initializeGame(numPlayers, k, seed, &initG);  
+        //Setting random numbers of victory and treasure cards
+        for (i = 0; i < numPlayers; i++){
+            initG.deckCount[i] = 0;
+            for (j = 0; j < 100; j++){
+                initG.deck[i][j] = randInt(estate, treasure_map); //1 = estate, 3 = province
+                initG.deckCount[i]++;
+            }
+        }       
+        // copy the game state to a test case
+        memcpy(&testG, &initG, sizeof(struct gameState));
+        // //Playing card
+        choice3 = thisPlayer;
+        cardEffect(smithy, choice1, choice2, choice3, &testG, handpos, &bonus);
+        runSmithyUnitTests(&initG, &testG, thisPlayer, k, testResults[m]);
+    }
+    printTestResults(testResults, numTests, numRuns, 0, unitTestDesc);
+    delete2dArray(testResults, numRuns, numTests + 1);
 
-    // // ---------------------------------------------------------------------
-    // printf("RANDOM TEST 3: Randomizing hand piles, max num of cards = 10\n");
-    // numRuns = 1000;
-    // numTests = 6;
-    // testResults = init2dArray(numRuns, numTests + 1);
-    // thisPlayer = 0;
-    // numPlayers = 2;
-    // for(m = 0; m < numRuns; m++)
-    // {
-    //     //Initializing game states
-    //     memset(&initG, 0, sizeof(struct gameState));
-    //     memset(&testG, 0, sizeof(struct gameState));
-    //     initializeGame(numPlayers, k, seed, &initG);
-    //     //Setting random number of cards in hand pale
-    //      for (i = 0; i < numPlayers; i++){
-    //         initG.handCount[i] = 0;
-    //         for (j = 0; j < 10; j++){
-    //             initG.hand[i][j] = randInt(estate, treasure_map); //1 = estate, 3 = province
-    //             initG.handCount[i]++;
-    //         }
-    //     }             
-    //     // copy the game state to a test case
-    //     memcpy(&testG, &initG, sizeof(struct gameState));
-    //     // //Playing card
-    //     choice3 = thisPlayer;
-    //     cardEffect(smithy, choice1, choice2, choice3, &testG, handpos, &bonus);
-    //     runSmithyUnitTests(&initG, &testG, thisPlayer, k, testResults[m]);
-    // }
-    // printTestResults(testResults, numTests, numRuns, 0, unitTestDesc);
-    // delete2dArray(testResults, numRuns, numTests + 1);
+    // ---------------------------------------------------------------------
+    printf("RANDOM TEST 3: Randomizing hand piles, max num of cards = 10\n");
+    numRuns = 1000;
+    numTests = 6;
+    testResults = init2dArray(numRuns, numTests + 1);
+    thisPlayer = 0;
+    numPlayers = 2;
+    for(m = 0; m < numRuns; m++)
+    {
+        //Initializing game states
+        memset(&initG, 0, sizeof(struct gameState));
+        memset(&testG, 0, sizeof(struct gameState));
+        initializeGame(numPlayers, k, seed, &initG);
+        //Setting random number of cards in hand pale
+         for (i = 0; i < numPlayers; i++){
+            initG.handCount[i] = 0;
+            for (j = 0; j < 10; j++){
+                initG.hand[i][j] = randInt(estate, treasure_map); //1 = estate, 3 = province
+                initG.handCount[i]++;
+            }
+        }             
+        // copy the game state to a test case
+        memcpy(&testG, &initG, sizeof(struct gameState));
+        // //Playing card
+        choice3 = thisPlayer;
+        cardEffect(smithy, choice1, choice2, choice3, &testG, handpos, &bonus);
+        runSmithyUnitTests(&initG, &testG, thisPlayer, k, testResults[m]);
+    }
+    printTestResults(testResults, numTests, numRuns, 0, unitTestDesc);
+    delete2dArray(testResults, numRuns, numTests + 1);
 
-    // // ---------------------------------------------------------------------
-    // printf("RANDOM TEST 4: Randomizing discard piles, max num of cards = 10\n");
-    // numRuns = 1000;
-    // numTests = 6;
-    // testResults = init2dArray(numRuns, numTests + 1);
-    // thisPlayer = 0;
-    // numPlayers = 2;
-    // // int m;
-    // for(m = 0; m < numRuns; m++)
-    // {
-    //     //Initializing game states
-    //     memset(&initG, 0, sizeof(struct gameState));
-    //     memset(&testG, 0, sizeof(struct gameState));
-    //     initializeGame(numPlayers, k, seed, &initG);
-    //     //Setting random number of cards in discard pile
-    //      for (i = 0; i < numPlayers; i++){
-    //         initG.discardCount[i] = 0;
-    //         for (j = 0; j < 10; j++){
-    //             initG.discard[i][j] = randInt(gold + 1, treasure_map); 
-    //             initG.discardCount[i]++;
-    //         }
-    //     }             
-    //     // copy the game state to a test case
-    //     memcpy(&testG, &initG, sizeof(struct gameState));
-    //     // //Playing card
-    //     choice3 = thisPlayer;
-    //     cardEffect(smithy, choice1, choice2, choice3, &testG, handpos, &bonus);
-    //     runSmithyUnitTests(&initG, &testG, thisPlayer, k, testResults[m]);
-    // }
-    // printTestResults(testResults, numTests, numRuns, 0, unitTestDesc);
-    // delete2dArray(testResults, numRuns, numTests + 1);
+    // ---------------------------------------------------------------------
+    printf("RANDOM TEST 4: Randomizing discard piles, max num of cards = 10\n");
+    numRuns = 1000;
+    numTests = 6;
+    testResults = init2dArray(numRuns, numTests + 1);
+    thisPlayer = 0;
+    numPlayers = 2;
+    // int m;
+    for(m = 0; m < numRuns; m++)
+    {
+        //Initializing game states
+        memset(&initG, 0, sizeof(struct gameState));
+        memset(&testG, 0, sizeof(struct gameState));
+        initializeGame(numPlayers, k, seed, &initG);
+        //Setting random number of cards in discard pile
+         for (i = 0; i < numPlayers; i++){
+            initG.discardCount[i] = 0;
+            for (j = 0; j < 10; j++){
+                initG.discard[i][j] = randInt(gold + 1, treasure_map); 
+                initG.discardCount[i]++;
+            }
+        }             
+        // copy the game state to a test case
+        memcpy(&testG, &initG, sizeof(struct gameState));
+        // //Playing card
+        choice3 = thisPlayer;
+        cardEffect(smithy, choice1, choice2, choice3, &testG, handpos, &bonus);
+        runSmithyUnitTests(&initG, &testG, thisPlayer, k, testResults[m]);
+    }
+    printTestResults(testResults, numTests, numRuns, 0, unitTestDesc);
+    delete2dArray(testResults, numRuns, numTests + 1);
 
-    // // ---------------------------------------------------------------------
-    // printf("RANDOM TEST 5: Randomizing kingdom cards, max num of cards = 10\n");
-    // numRuns = 1000;
-    // numTests = 6;
-    // testResults = init2dArray(numRuns, numTests + 1);
-    // thisPlayer = 0;
-    // numPlayers = 2;
-    // int card;
-    // for(m = 0; m < numRuns; m++)
-    // {
-    //     //Initializing game states
-    //     memset(&initG, 0, sizeof(struct gameState));
-    //     memset(&testG, 0, sizeof(struct gameState));
-    //     //Assigning random kingdom cards to k array
-    //     for(i = 0; i < 10; i++){
-    //         do{
-    //             card = randInt(adventurer, sea_hag);  
-    //         }while( isDupCard(k, 10, card) == 1);
-    //         k[i] = card;
-    //     }    
-    //     initializeGame(numPlayers, k, seed, &initG);  
-    //     // copy the game state to a test case
-    //     memcpy(&testG, &initG, sizeof(struct gameState));
-    //     // //Playing card
-    //     choice3 = thisPlayer;
-    //     cardEffect(smithy, choice1, choice2, choice3, &testG, handpos, &bonus);
-    //     runSmithyUnitTests(&initG, &testG, thisPlayer, k, testResults[m]);
-    // }
-    // printTestResults(testResults, numTests, numRuns, 0, unitTestDesc);
-    // delete2dArray(testResults, numRuns, numTests + 1);
+    // ---------------------------------------------------------------------
+    printf("RANDOM TEST 5: Randomizing kingdom cards, max num of cards = 10\n");
+    numRuns = 1000;
+    numTests = 6;
+    testResults = init2dArray(numRuns, numTests + 1);
+    thisPlayer = 0;
+    numPlayers = 2;
+    int card;
+    for(m = 0; m < numRuns; m++)
+    {
+        //Initializing game states
+        memset(&initG, 0, sizeof(struct gameState));
+        memset(&testG, 0, sizeof(struct gameState));
+        //Assigning random kingdom cards to k array
+        for(i = 0; i < 10; i++){
+            do{
+                card = randInt(adventurer, sea_hag);  
+            }while( isDupCard(k, 10, card) == 1);
+            k[i] = card;
+        }    
+        initializeGame(numPlayers, k, seed, &initG);  
+        // copy the game state to a test case
+        memcpy(&testG, &initG, sizeof(struct gameState));
+        // //Playing card
+        choice3 = thisPlayer;
+        cardEffect(smithy, choice1, choice2, choice3, &testG, handpos, &bonus);
+        runSmithyUnitTests(&initG, &testG, thisPlayer, k, testResults[m]);
+    }
+    printTestResults(testResults, numTests, numRuns, 0, unitTestDesc);
+    delete2dArray(testResults, numRuns, numTests + 1);
 
      return 0;
 }
